@@ -1,0 +1,23 @@
+{
+  "name": "testdino-reporting-tests",
+  "version": "1.0.0",
+  "scripts": {
+    "test": "npx playwright test",
+    "test:shard1": "npx playwright test tests/shard-01.spec.ts",
+    "test:shard2": "npx playwright test tests/shard-02.spec.ts",
+    "test:shard3": "npx playwright test tests/shard-03.spec.ts",
+    "test:shard4": "npx playwright test tests/shard-04.spec.ts",
+    "test:shard5": "npx playwright test tests/shard-05.spec.ts",
+    "test:shard6": "npx playwright test tests/shard-06.spec.ts",
+    "test:shard7": "npx playwright test tests/shard-07.spec.ts",
+    "test:shard8": "npx playwright test tests/shard-08.spec.ts",
+    "test:shard9": "npx playwright test tests/shard-09.spec.ts",
+    "test:shard10": "npx playwright test tests/shard-10.spec.ts"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.50.0"
+  },
+  "dependencies": {
+    "@testdino/playwright": "file:testdino-playwright-1.0.11.tgz"
+  }
+}
