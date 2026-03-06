@@ -31,6 +31,7 @@ jobs:
       - name: Run Playwright shard with TestDino
         env:
           TESTDINO_TOKEN: ${{ secrets.TESTDINO_TOKEN }}
+          TESTDINO_SERVER_URL: https://staging-api.testdino.com
         run: npx playwright test --shard=${{ matrix.shard }}/10
 
       - name: Upload test results

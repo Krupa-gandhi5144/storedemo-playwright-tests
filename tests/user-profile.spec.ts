@@ -15,8 +15,9 @@ test.describe('User Profile', () => {
   ];
 
   for (let i = 0; i < cases.length; i++) {
-    test(cases[i], async () => {
-      expect(true).toBe(true);
+    test(cases[i], async ({ page }) => {
+      await page.goto('/');
+      await expect(page).not.toHaveURL('about:blank');
     });
   }
 });
