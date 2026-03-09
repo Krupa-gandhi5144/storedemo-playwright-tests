@@ -15,7 +15,8 @@
     "test:shard10": "npx playwright test tests/shard-10.spec.ts"
   },
   "devDependencies": {
-    "@playwright/test": "^1.50.0"
+    "@playwright/test": "^1.50.0",
+    "@types/node": "^25.3.5"
   },
   "dependencies": {
     "@testdino/playwright": "file:testdino-playwright-1.0.11.tgz"
