@@ -64,7 +64,7 @@ jobs:
           npx playwright test \
             --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }} \
             --grep "@chromium|@firefox|@webkit|@android|@ios|@api" \
-            
+
       # ✅ Upload blob report (needed for merge)
       - name: Upload blob report
         if: ${{ !cancelled() }}
@@ -77,7 +77,7 @@ jobs:
   merge-reports:
     name: Merge Reports
     needs: run-tests
-    if: always()
+    if: ${{ !cancelled() }}
     runs-on: ubuntu-latest
 
     steps:
@@ -94,22 +94,23 @@ jobs:
         run: |
           npm ci
           npx playwright install --with-deps
-      # ✅ Download all shard blob reports
+      # ✅ Download all shard blob reports into one directory (blob names include shard, no clash)
       - name: Download all blob reports
         uses: actions/download-artifact@v4
         with:
-          path: ./all-blob-reports
+          path: all-blob-reports
           pattern: blob-report-*
           merge-multiple: true
 
-      # ✅ Merge Playwright HTML report
+      # ✅ Merge blob reports into a single HTML report
       - name: Merge Playwright HTML report
         run: |
-          npx playwright merge-reports ./all-blob-reports
-      # ✅ Upload merged Playwright report
+          npx playwright merge-reports --reporter html all-blob-reports
+
+      # ✅ Upload merged Playwright report (download from Actions → Artifacts)
       - name: Upload combined Playwright report
         uses: actions/upload-artifact@v4
         with:
           name: Playwright Test Report
-          path: ./playwright-report
+          path: playwright-report
           retention-days: 14
