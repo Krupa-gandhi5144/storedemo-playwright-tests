@@ -28,7 +28,7 @@ export default defineConfig({
     ['blob', { outputDir: 'blob-report' }], 
     ['json', { outputFile: './playwright-report/report.json' }],
     ['@testdino/playwright', {
-      token: process.env.TESTDINO_TOKEN,
+      token: process.env.TESTDINO_API_KEY,
       debug: true,
       serverUrl: 'https://stg-api.testdino.com',
     }],

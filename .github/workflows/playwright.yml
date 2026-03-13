@@ -52,10 +52,10 @@ jobs:
           npm install ./testdino-playwright-1.0.11.tgz
           npx playwright install --with-deps chromium
 
-      # If staging is unreachable from GitHub (ENOTFOUND), set repo secret TESTDINO_SERVER_URL to a reachable API URL, or leave TESTDINO_TOKEN unset to skip TestDino reporter
+      # If staging is unreachable from GitHub (ENOTFOUND), set repo secret TESTDINO_SERVER_URL to a reachable API URL, or leave TESTDINO_API_KEY unset to skip TestDino reporter
       - name: Run Playwright Tests
         env:
-          TESTDINO_TOKEN: ${{ secrets.TESTDINO_TOKEN }}
+          TESTDINO_API_KEY: ${{ secrets.TESTDINO_API_KEY }}
           TESTDINO_SERVER_URL: ${{ secrets.TESTDINO_SERVER_URL }}
         run: |
           npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
@@ -96,8 +96,11 @@ jobs:
           merge-multiple: true
 
       - name: Merge HTML & JSON reports
+        env:
+          PLAYWRIGHT_JSON_OUTPUT_FILE: ./playwright-report/report.json
         run: |
-          npx playwright merge-reports --reporter html ./all-blob-reports
+          mkdir -p playwright-report
+          npx playwright merge-reports --reporter html --reporter json ./all-blob-reports
 
       - name: Upload combined Playwright report
         uses: actions/upload-artifact@v4
@@ -108,6 +111,6 @@ jobs:
 
       - name: Upload report to TestDino
         env:
-          TESTDINO_TOKEN: ${{ secrets.TESTDINO_TOKEN }}
+          TESTDINO_API_KEY: ${{ secrets.TESTDINO_API_KEY }}
         run: |
-          npx tdpw@latest upload ./playwright-report --token="$TESTDINO_TOKEN"
+          npx tdpw@latest upload ./playwright-report --token="$TESTDINO_API_KEY"
