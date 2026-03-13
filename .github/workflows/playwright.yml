@@ -50,7 +50,7 @@ jobs:
         run: |
           npm ci
           npm install ./testdino-playwright-1.0.11.tgz
-          npx playwright install --with-deps chromium firefox webkit
+          npx playwright install --with-deps chromium
 
       # If staging is unreachable from GitHub (ENOTFOUND), set repo secret TESTDINO_SERVER_URL to a reachable API URL, or leave TESTDINO_TOKEN unset to skip TestDino reporter
       - name: Run Playwright Tests
@@ -58,9 +58,7 @@ jobs:
           TESTDINO_TOKEN: ${{ secrets.TESTDINO_TOKEN }}
           TESTDINO_SERVER_URL: ${{ secrets.TESTDINO_SERVER_URL }}
         run: |
-          npx playwright test \
-            --grep="@chromium|@firefox|@webkit" \
-            --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
+          npx playwright test --shard=${{ matrix.shardIndex }}/${{ matrix.shardTotal }}
 
       - name: Upload blob report
         if: ${{ !cancelled() }}

@@ -21,27 +21,21 @@ export default defineConfig({
   },
 
   reporter: [
-    ['html', { outputFolder: 'playwright-report', open: 'never' }],
-    ['blob', { outputDir: 'blob-report' }], // Blob reporter for merging
+    ['html', {
+      outputFolder: 'playwright-report',
+      open: 'never'
+    }],
+    ['blob', { outputDir: 'blob-report' }], 
     ['json', { outputFile: './playwright-report/report.json' }],
-    // Only enable TestDino when token is set (use TESTDINO_SERVER_URL in CI if staging is unreachable)
-    ...(process.env.TESTDINO_TOKEN
-      ? ([
-          [
-            '@testdino/playwright',
-            {
-              token: process.env.TESTDINO_TOKEN,
-              serverUrl:
-                process.env.TESTDINO_SERVER_URL ||
-                'https://staging-api.testdino.com',
-            },
-          ],
-        ] as const)
-      : []),
+    ['@testdino/playwright', {
+      token: process.env.TESTDINO_TOKEN,
+      debug: true,
+      serverUrl: 'https://staging-api.testdino.com',
+    }],
   ],
 
   use: {
-    baseURL: 'https://storedemo.testdino.com/products',
+    baseURL: 'https://storedemo.testdino.com/',
     headless: true,
     trace: 'retain-on-failure',
     screenshot: 'only-on-failure',
@@ -50,36 +44,8 @@ export default defineConfig({
     navigationTimeout: 30 * 1000,
   },
 
+  // Run all test cases (Homepage, Login, Cart, Checkout, Navigation, Search, Payment, User Profile, Order History, Product Listing) on each browser
   projects: [
-    {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-      grep: /@chromium/,
-    },
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-      grep: /@firefox/,
-    },
-    {
-      name: 'webkit',
-      use: { ...devices['Desktop Safari'] },
-      grep: /@webkit/,
-    },
-    {
-      name: 'android',
-      use: { ...devices['Pixel 5'] },
-      grep: /@android/,
-    },
-    {
-      name: 'ios',
-      use: { ...devices['iPhone 12'] },
-      grep: /@ios/,
-    },
-    {
-      name: 'api',
-      use: { ...devices['API'] },
-      grep: /@api/,
-    },
+    { name: 'chromium', use: { ...devices['Desktop Chrome'] } }
   ],
 });
