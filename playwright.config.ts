@@ -9,20 +9,23 @@ const isCI = !!process.env.CI;
 
 export default defineConfig({
   testDir: './tests',
-  snapshotDir: './__screenshots__', 
+  snapshotDir: './__screenshots__', // ✅ Baseline image storage
   fullyParallel: true,
   forbidOnly: isCI,
-  retries: isCI ? 3 : 1,
+  retries: isCI ? 1 : 1, // Enable retries for flaky test behavior
   workers: isCI ? 5 : 5,
 
   timeout: 60 * 1000,
+  expect: {
+    timeout: 10 * 1000,
+  },
 
   reporter: [
     ['html', {
       outputFolder: 'playwright-report',
       open: 'never'
     }],
-    ['blob', { outputDir: 'blob-report' }], 
+    ['blob', { outputDir: 'blob-report' }],
     ['json', { outputFile: './playwright-report/report.json' }],
     ['@testdino/playwright', {
       token: process.env.TESTDINO_TOKEN,
@@ -43,9 +46,6 @@ export default defineConfig({
 
   // Run all test cases (Homepage, Login, Cart, Checkout, Navigation, Search, Payment, User Profile, Order History, Product Listing) on each browser
   projects: [
-    {
-      name: 'chromium',
-      use: { ...devices['Desktop Chrome'] },
-    },
+    { name: 'chromium', use: { ...devices['Desktop Chrome'] } }
   ],
 });
