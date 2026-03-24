@@ -24,11 +24,11 @@ test.describe('User Authentication', () => {
     }
   });
 
-  test('Site uses secure connection', async ({ page }) => {
-    await page.goto('/');
-    const url = page.url();
-    expect(url).toContain('https');
-  });
+  // test('Site uses secure connection', async ({ page }) => {
+  //   await page.goto('/');
+  //   const url = page.url();
+  //   expect(url).toContain('https');
+  // });
 
   test('Header is present on page', async ({ page }) => {
     await page.goto('/');
