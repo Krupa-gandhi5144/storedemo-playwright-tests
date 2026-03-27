@@ -417,8 +417,8 @@ test.describe('User Profile', () => {
     await page.goto('/');
   });
 
-  test.skip('Delete user account', async ({ page }) => {
-    await page.goto('/');
-  });
+  // test.skip('Delete user account', async ({ page }) => {
+  //   await page.goto('/');
+  // });
 
 });
