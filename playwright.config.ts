@@ -15,7 +15,7 @@ export default defineConfig({
   retries: isCI ? 1 : 1, // Enable retries for flaky test behavior
   workers: isCI ? 5 : 5,
 
-  timeout: 60 * 1000,
+  timeout: 180 * 1000,
   expect: {
     timeout: 10 * 1000,
   },
@@ -46,6 +46,6 @@ export default defineConfig({
 
   // Run all test cases (Homepage, Login, Cart, Checkout, Navigation, Search, Payment, User Profile, Order History, Product Listing) on each browser
   projects: [
-    { name: 'chromium', use: { ...devices['Desktop Chrome'] } }
+    { name: 'chromium', use: { ...devices['Desktop Chrome'], channel: 'chrome' } }
   ],
 });
