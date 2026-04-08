@@ -20,32 +20,15 @@ export default defineConfig({
     timeout: 10 * 1000,
   },
 
-  // reporter: [
-  //   ['html', {
-  //     outputFolder: 'playwright-report',
-  //     open: 'never'
-  //   }],
-  //   ['blob', { outputDir: 'blob-report' }],
-  //   ['json', { outputFile: './playwright-report/report.json' }],
-  //   ['@testdino/playwright', {
-  //     token: process.env.TESTDINO_TOKEN,
-  //     debug: true,
-  //     serverUrl: 'https://stg-api.testdino.com',
-  //   }],
-  // ],
-
   reporter: [
-  ['html', {
-    outputFolder: 'playwright-report',
-    open: 'never'
-  }],
-  ['json', { outputFile: './playwright-report/report.json' }],
-  ['@testdino/playwright', {
-    token: 'trx_production_ce76d772fa4d80509ed5dbb3386723e797902e5f6048c2f5955a20cb2a7cb17',
-    // Remove serverUrl if you're on production, not staging
-    // serverUrl: 'https://stg-api.testdino.com',  ← This points to STAGING, not production!
-  }],
-],
+    ['html', {
+      outputFolder: 'playwright-report',
+      open: 'never'
+    }],
+    ['blob', { outputDir: 'blob-report' }], // Blob reporter for merging
+    ['json', { outputFile: './playwright-report/report.json' }],
+    ['@testdino/playwright', { token: process.env.TESTDINO_TOKEN }],
+  ],
 
   use: {
     baseURL: 'https://storedemo.testdino.com/',
