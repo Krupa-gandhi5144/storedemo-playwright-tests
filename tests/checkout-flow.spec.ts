@@ -376,7 +376,7 @@ test.describe('Checkout Flow', () => {
     await expect(header).toBeVisible();
   });
 
-  // ❌ FAIL (7)
+  // ❌ FAIL 
   test('Checkout page shows shipping form by default', async ({ page }) => {
     await page.goto('/checkout');
     await page.waitForTimeout(2000);
