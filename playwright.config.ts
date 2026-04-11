@@ -20,6 +20,15 @@ export default defineConfig({
     timeout: 10 * 1000,
   },
 
+  
+    // Add this in playwright.config.js|ts|mjs
+  reporter: [
+    // Mandatory reporter for JSON results
+    ['json', { outputFile: './playwright-report/report.json' }],
+    // Optional, enables native HTML upload
+    ['html', { outputDir: './playwright-report' }],
+  ]
+
   // reporter: [
   //   ['html', {
   //     outputFolder: 'playwright-report',
