@@ -426,7 +426,6 @@
 //     await expect(page).toHaveURL(/storedemo/);
 //   });
 
-//   // ⏭️ SKIP (2)
 //   test.skip('Two-factor authentication setup', async ({ page }) => {
 //     await page.goto('/');
 //   });
