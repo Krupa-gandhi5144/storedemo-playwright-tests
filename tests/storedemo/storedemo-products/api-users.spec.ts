@@ -4,7 +4,6 @@ const API_BASE = 'https://dummyjson.com';
 
 test.describe('API Users', () => {
 
-  // ✅ PASS (25)
   test('GET /users full response structure validation', async ({ request }) => {
     const response = await request.get(`${API_BASE}/users`);
     expect(response.status()).toBe(200);
