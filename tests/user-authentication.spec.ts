@@ -2,7 +2,6 @@ import { test, expect } from '@playwright/test';
 
 test.describe('User Authentication', () => {
 
-  // ✅ PASS (15)
   test('Auth page full load and structure verification', async ({ page }) => {
     const response = await page.goto('/');
     expect(response?.status()).toBe(200);
