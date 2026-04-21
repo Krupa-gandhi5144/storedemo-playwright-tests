@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('User Profile', () => {
 
-  // ✅ PASS (15)
+  
   test('Profile page full load and content verification', async ({ page }) => {
     await page.goto('/');
     await expect(page).toHaveURL(/storedemo/);
