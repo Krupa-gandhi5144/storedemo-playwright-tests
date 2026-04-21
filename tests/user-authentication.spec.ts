@@ -380,7 +380,7 @@ test.describe('User Authentication', () => {
     const toggle = page.locator('[data-testid="password-visibility-toggle"]');
     await expect(toggle).toBeVisible({ timeout: 3000 });
   });
-
+  //
   test('Registration link visible on login page', async ({ page }) => {
     await page.goto('/');
     await page.waitForTimeout(2000);
