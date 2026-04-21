@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Checkout Flow', () => {
 
-  // ✅ PASS (15)
+  // 
   test('Checkout flow full page load and structure verification', async ({ page }) => {
     const response = await page.goto('/');
     expect(response?.status()).toBe(200);
