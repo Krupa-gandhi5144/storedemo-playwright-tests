@@ -352,7 +352,7 @@ test.describe('User Profile', () => {
     await page.waitForTimeout(2000);
   });
 
-  // ❌ FAIL (5)
+
   test('User avatar placeholder shown when not logged in', async ({ page }) => {
     await page.goto('/');
     await page.waitForTimeout(2000);

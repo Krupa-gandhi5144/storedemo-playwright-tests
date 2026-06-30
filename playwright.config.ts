@@ -39,7 +39,7 @@ export default defineConfig({
   reporter: [
     ['@testdino/playwright', {
       serverUrl: 'https://stg-analytics.testdino.com',
-      token: 'td_api_70296d2896b7fea08045e7ce8a08b409ffa010b415b4bad4d196daa0d93d697a',
+      token: 'td_api_e7927f225b69bc5cf522bd3c3b6395e48d73fc2e10a3bd970fbae426943f47d7',
       // ciRunId,
       debug: false,
       artifacts: false
