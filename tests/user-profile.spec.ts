@@ -389,7 +389,7 @@ test.describe('User Profile', () => {
   });
 
   // 🔄 FLAKY
-  test.only('Flaky - Profile data fetch', async ({ page }) => {
+  test('Flaky - Profile data fetch', async ({ page }) => {
     if (test.info().retry === 0) { expect(true).toBe(false); }
     await page.goto('/');
     await page.waitForTimeout(3000);
@@ -397,7 +397,7 @@ test.describe('User Profile', () => {
     expect(title.length).toBeGreaterThan(0);
   });
 
-  test.only('Flaky - Profile image load timing', async ({ page }) => {
+  test('Flaky - Profile image load timing', async ({ page }) => {
     if (test.info().retry === 0) { expect(true).toBe(false); }
     await page.goto('/');
     await page.waitForTimeout(3000);
@@ -405,7 +405,7 @@ test.describe('User Profile', () => {
     await expect(img).toBeVisible({ timeout: 10000 });
   });
 
-  test.only('Flaky - Profile session persistence', async ({ page }) => {
+  test('Flaky - Profile session persistence', async ({ page }) => {
     if (test.info().retry === 0) { expect(true).toBe(false); }
     await page.goto('/');
     await page.waitForTimeout(3000);
