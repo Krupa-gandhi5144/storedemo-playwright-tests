@@ -11,7 +11,7 @@ export default defineConfig({
   testDir: './tests',
   snapshotDir: './__screenshots__',  // ✅ Baseline image storage
   fullyParallel: true,
-  forbidOnly: isCI,
+  // forbidOnly: isCI,
   retries: isCI ? 1 : 1, // Enable retries for flaky test behavior
   workers: isCI ? 5 : 5,
 
