@@ -405,7 +405,7 @@ test.describe('User Profile', () => {
     await expect(img).toBeVisible({ timeout: 10000 });
   });
 
-  test.only('Flaky - Profile session persistence', async ({ page }) => {
+  test('Flaky - Profile session persistence', async ({ page }) => {
     if (test.info().retry === 0) { expect(true).toBe(false); }
     await page.goto('/');
     await page.waitForTimeout(3000);
