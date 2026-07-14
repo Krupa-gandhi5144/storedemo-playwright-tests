@@ -57,7 +57,7 @@ export default defineConfig({
       artifacts: true,
     },
   ],
-  ['html', { outputFolder: 'playwright-report', open: 'never' }],
+  ['html', { outputFolder: './playwright-report', open: 'never' }],
   ['json', { outputFile: 'report.json' }],
 ],
 
