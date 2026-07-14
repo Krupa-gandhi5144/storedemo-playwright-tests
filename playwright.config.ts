@@ -52,7 +52,8 @@ export default defineConfig({
     '@testdino/playwright',
     {
       serverUrl: 'https://stg-analytics.testdino.com',
-      token: 'td_api_90e86a4418409d2f65622b2dfce15fef90160076d0e9292c1718c20fc886a21e',
+      // token: 'td_api_90e86a4418409d2f65622b2dfce15fef90160076d0e9292c1718c20fc886a21e'
+      token: 'td_api_49ad2f70491c22d2decaf2024777a4ca984a1a2cab4dd3f61cdb6a317ff34698',
       debug: true,
       artifacts: true,
     },
