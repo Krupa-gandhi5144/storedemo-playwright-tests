@@ -19,7 +19,6 @@
     "@types/node": "^25.3.5"
   },
   "dependencies": {
-    // "@testdino/playwright": "file:testdino-playwright-2.0.0.tgz",
     "dotenv": "^17.3.1",
     "tdpw": "^1.0.36"
   }
