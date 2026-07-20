@@ -48,6 +48,7 @@ export default defineConfig({
   // ],
 
   reporter: [
+  ['blob', { outputDir: 'blob-report' }],
   [
     '@testdino/playwright',
     {
