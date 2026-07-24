@@ -56,7 +56,7 @@ export default defineConfig({
       // token: 'td_api_90e86a4418409d2f65622b2dfce15fef90160076d0e9292c1718c20fc886a21e'
       token: 'td_api_aa5102fa599b00b6573c7d33cd637a9752fca869472572ff6f8f18b2aa9887c6',
       debug: true,
-      artifacts: true,
+      artifacts: false,
     },
   ],
   ['html', { outputFolder: './playwright-report', open: 'never' }],
