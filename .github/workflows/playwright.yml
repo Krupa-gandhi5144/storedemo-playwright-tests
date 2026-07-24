@@ -25,7 +25,7 @@ jobs:
 
     env:
       TDPW_TOKEN: ${{ secrets.TESTDINO_TOKEN }}
-      TESTDINO_SERVER_URL: https://reporter.testdino.com
+      TESTDINO_SERVER_URL: https://stg-analytics.testdino.com
       TESTDINO_CI_RUN_ID: ${{ github.run_id }}-${{ github.run_attempt }}
 
     steps:
