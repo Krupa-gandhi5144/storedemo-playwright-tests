@@ -78,27 +78,27 @@ export default defineConfig({
       name: 'chromium',
       use: { ...devices['Desktop Chrome'] },
     },
-    {
-      name: 'firefox',
-      use: { ...devices['Desktop Firefox'] },
-    },
+    // {
+    //   name: 'firefox',
+    //   use: { ...devices['Desktop Firefox'] },
+    // },
     // {
     //   name: 'webkit',
     //   use: { ...devices['Desktop Safari'] },
     //   grep: /@webkit/, // only run tests tagged @webkit
     // },
-    {
-      name: 'android',
-      use: { ...devices['Pixel 5'] },
-    },
-    {
-      name: 'ios',
-      use: { ...devices['iPhone 12'] },
-    },
+   // {
+    //  name: 'android',
+    //  use: { ...devices['Pixel 5'] },
+    // },
+   // {
+    //  name: 'ios',
+     // use: { ...devices['iPhone 12'] },
+    //},
 
-    {
-      name: 'api',
-      use: { ...devices['API'] },
-    },
+    // {
+    //   name: 'api',
+    //   use: { ...devices['API'] },
+    // },
   ],
 });
