@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 test.describe('User Profile', () => {
 
 
-  test.only('Profile page full load and content verification', async ({ page }) => {
+  test('Profile page full load and content verification', async ({ page }) => {
     await page.goto('/');
     await expect(page).toHaveURL(/storedemo/);
     const title = await page.title();
@@ -41,7 +41,7 @@ test.describe('User Profile', () => {
     await expect(header).toBeVisible();
   });
 
-  test.only('Profile page multi-page navigation flow', async ({ page }) => {
+  test('Profile page multi-page navigation flow', async ({ page }) => {
     await page.goto('/');
     await expect(page).toHaveURL(/storedemo/);
     await page.waitForTimeout(2000);
@@ -71,7 +71,7 @@ test.describe('User Profile', () => {
     await expect(header).toBeVisible({ timeout: 10000 });
   });
 
-  test.only('Profile page no JS errors during interaction', async ({ page }) => {
+  test('Profile page no JS errors during interaction', async ({ page }) => {
     const errors: string[] = [];
     page.on('pageerror', (err) => errors.push(err.message));
     await page.goto('/');
