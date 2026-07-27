@@ -39,8 +39,8 @@ export default defineConfig({
   // reporter: [
   //   ['@testdino/playwright', {
   //     serverUrl: 'https://stg-analytics.testdino.com',
-  //     // token: 'td_api_e7927f225b69bc5cf522bd3c3b6395e48d73fc2e10a3bd970fbae426943f47d7',
-  //      token: 'td_api_ad3e91d4c6e78c6a4ca4010e42086b969dc0bb8e0a20eac52ca4b89fe4fc49af',
+  //     // token: 'td_api_41adb680ddaf63ab53d633c9bd3be03d621483237de4aeba57a2b5ea9b3a6c5d',
+  //      token: 'td_api_41adb680ddaf63ab53d633c9bd3be03d621483237de4aeba57a2b5ea9b3a6c5d',
   //     // ciRunId,
   //     debug: false,
   //     artifacts: false
@@ -53,8 +53,8 @@ export default defineConfig({
     '@testdino/playwright',
     {
       serverUrl: 'https://stg-analytics.testdino.com',
-      // token: 'td_api_90e86a4418409d2f65622b2dfce15fef90160076d0e9292c1718c20fc886a21e'
-      token: 'td_api_aa5102fa599b00b6573c7d33cd637a9752fca869472572ff6f8f18b2aa9887c6',
+      // token: 'td_api_41adb680ddaf63ab53d633c9bd3be03d621483237de4aeba57a2b5ea9b3a6c5d'
+      token: 'td_api_41adb680ddaf63ab53d633c9bd3be03d621483237de4aeba57a2b5ea9b3a6c5d',
       debug: true,
       artifacts: false,
     },
