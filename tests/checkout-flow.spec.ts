@@ -322,7 +322,7 @@ test.describe('Checkout Flow', () => {
     await page.waitForTimeout(2000);
   });
 
-  test('Checkout flow deep back/forward navigation', async ({ page }) => {
+  test.only('Checkout flow deep back/forward navigation', async ({ page }) => {
     await page.goto('/');
     await page.waitForTimeout(2000);
     await page.goto('/products');
