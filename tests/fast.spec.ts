@@ -1,6 +1,6 @@
 // import { test, expect } from '@playwright/test';
 
-// test.describe.only('Fast test suite', () => {
+// test.describe('Fast test suite', () => {
 
 //   // ✅ PASSING TESTS (5)bb
 

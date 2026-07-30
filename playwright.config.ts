@@ -55,7 +55,8 @@ export default defineConfig({
       serverUrl: 'https://stg-analytics.testdino.com',
       // token: 'td_api_41adb680ddaf63ab53d633c9bd3be03d621483237de4aeba57a2b5ea9b3a6c5d'
       token: 'td_api_41adb680ddaf63ab53d633c9bd3be03d621483237de4aeba57a2b5ea9b3a6c5d',
-      debug: true,
+      debug: false,
+      ciRunId: "Adasd",
       artifacts: false,
     },
   ],
