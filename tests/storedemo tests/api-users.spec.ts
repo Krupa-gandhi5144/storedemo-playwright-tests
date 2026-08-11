@@ -2,10 +2,10 @@ import { test, expect } from '@playwright/test';
 
 const API_BASE = 'https://dummyjson.com';
 
-test.describe('API Users', () => {
+test.describe('API Users', { tag: '@ApiUsers' }, () => {
 
   // ✅ PASS (25)
-  test('GET /users full response structure validation', async ({ request }) => {
+  test('GET /users full response structure validation', { tag: ['@GetUsersFullResponseStructureValidation', '@API'] }, async ({ request }) => {
     const response = await request.get(`${API_BASE}/users`);
     expect(response.status()).toBe(200);
     const body = await response.json();
@@ -36,7 +36,7 @@ test.describe('API Users', () => {
     expect(firstUser.email).toContain('@');
   });
 
-  test('GET /users iterate and validate first 10 users', async ({ request }) => {
+  test('GET /users iterate and validate first 10 users', { tag: '@GetUsersIterateAndValidateFirst10Users' }, async ({ request }) => {
     const response = await request.get(`${API_BASE}/users?limit=10`);
     expect(response.status()).toBe(200);
     const body = await response.json();
@@ -66,7 +66,7 @@ test.describe('API Users', () => {
     }
   });
 
-  test('GET /users individual user deep validation for users 1-10', async ({ request }) => {
+  test('GET /users individual user deep validation for users 1-10', { tag: '@GetUsersIndividualUserDeepValidationForUsers110' }, async ({ request }) => {
     for (let id = 1; id <= 10; id++) {
       const response = await request.get(`${API_BASE}/users/${id}`);
       expect(response.status()).toBe(200);
@@ -89,7 +89,7 @@ test.describe('API Users', () => {
     }
   });
 
-  test('GET /users pagination full test with skip and limit', async ({ request }) => {
+  test('GET /users pagination full test with skip and limit', { tag: '@GetUsersPaginationFullTestWithSkipAndLimit' }, async ({ request }) => {
     const limits = [1, 3, 5, 10, 15, 20];
     for (const limit of limits) {
       const response = await request.get(`${API_BASE}/users?limit=${limit}`);
@@ -108,7 +108,7 @@ test.describe('API Users', () => {
     }
   });
 
-  test('GET /users/search with multiple queries', async ({ request }) => {
+  test('GET /users/search with multiple queries', { tag: '@GetUserssearchWithMultipleQueries' }, async ({ request }) => {
     const queries = ['john', 'emily', 'michael', 'james', 'sarah'];
     for (const query of queries) {
       const response = await request.get(`${API_BASE}/users/search?q=${query}`);
@@ -121,7 +121,7 @@ test.describe('API Users', () => {
     }
   });
 
-  test('POST /users/add full validation', async ({ request }) => {
+  test('POST /users/add full validation', { tag: '@PostUsersaddFullValidation' }, async ({ request }) => {
     const newUser = { firstName: 'Test', lastName: 'User', email: 'test@example.com', age: 25 };
     const response = await request.post(`${API_BASE}/users/add`, { data: newUser });
     expect(response.status()).toBe(200);
@@ -134,7 +134,7 @@ test.describe('API Users', () => {
     expect(body).toHaveProperty('age', 25);
   });
 
-  test('PUT /users update multiple users', async ({ request }) => {
+  test('PUT /users update multiple users', { tag: '@PutUsersUpdateMultipleUsers' }, async ({ request }) => {
     for (let id = 1; id <= 5; id++) {
       const response = await request.put(`${API_BASE}/users/${id}`, {
         data: { firstName: `Updated_${id}` },
@@ -146,7 +146,7 @@ test.describe('API Users', () => {
     }
   });
 
-  test('DELETE /users delete multiple users', async ({ request }) => {
+  test('DELETE /users delete multiple users', { tag: '@DeleteUsersDeleteMultipleUsers' }, async ({ request }) => {
     for (let id = 1; id <= 5; id++) {
       const response = await request.delete(`${API_BASE}/users/${id}`);
       expect(response.status()).toBe(200);
@@ -157,7 +157,7 @@ test.describe('API Users', () => {
     }
   });
 
-  test('GET /users cross-compare list vs individual', async ({ request }) => {
+  test('GET /users cross-compare list vs individual', { tag: '@GetUsersCrosscompareListVsIndividual' }, async ({ request }) => {
     const listResponse = await request.get(`${API_BASE}/users?limit=5`);
     const listBody = await listResponse.json();
     expect(listBody.users.length).toBe(5);
@@ -172,7 +172,7 @@ test.describe('API Users', () => {
     }
   });
 
-  test('POST /auth/login full token validation', async ({ request }) => {
+  test('POST /auth/login full token validation', { tag: '@PostAuthloginFullTokenValidation' }, async ({ request }) => {
     const response = await request.post(`${API_BASE}/auth/login`, {
       data: { username: 'emilys', password: 'emilyspass' },
     });
@@ -191,7 +191,7 @@ test.describe('API Users', () => {
     expect(body).toHaveProperty('image');
   });
 
-  test('GET /users response time validation across endpoints', async ({ request }) => {
+  test('GET /users response time validation across endpoints', { tag: '@GetUsersResponseTimeValidationAcrossEndpoints' }, async ({ request }) => {
     const endpoints = [
       `${API_BASE}/users`,
       `${API_BASE}/users/1`,
@@ -211,7 +211,7 @@ test.describe('API Users', () => {
     }
   });
 
-  test('GET /users verify user data types consistency', async ({ request }) => {
+  test('GET /users verify user data types consistency', { tag: '@GetUsersVerifyUserDataTypesConsistency' }, async ({ request }) => {
     const response = await request.get(`${API_BASE}/users?limit=15`);
     const body = await response.json();
     for (const user of body.users) {
@@ -230,7 +230,7 @@ test.describe('API Users', () => {
     }
   });
 
-  test('POST /users/add with various user data', async ({ request }) => {
+  test('POST /users/add with various user data', { tag: '@PostUsersaddWithVariousUserData' }, async ({ request }) => {
     const users = [
       { firstName: 'Alice', lastName: 'Smith' },
       { firstName: 'Bob', lastName: 'Jones', email: 'bob@test.com' },
@@ -247,7 +247,7 @@ test.describe('API Users', () => {
     }
   });
 
-  test('GET /users verify address structure', async ({ request }) => {
+  test('GET /users verify address structure', { tag: '@GetUsersVerifyAddressStructure' }, async ({ request }) => {
     const response = await request.get(`${API_BASE}/users?limit=5`);
     const body = await response.json();
     for (const user of body.users) {
@@ -262,7 +262,7 @@ test.describe('API Users', () => {
     }
   });
 
-  test('GET /users verify user company data', async ({ request }) => {
+  test('GET /users verify user company data', { tag: '@GetUsersVerifyUserCompanyData' }, async ({ request }) => {
     const response = await request.get(`${API_BASE}/users?limit=5`);
     const body = await response.json();
     for (const user of body.users) {
@@ -278,39 +278,39 @@ test.describe('API Users', () => {
   });
 
   // ❌ FAIL (7)
-  test('GET /users/1 should have role as superadmin', async ({ request }) => {
+  test('GET /users/1 should have role as superadmin', { tag: '@GetUsers1ShouldHaveRoleAsSuperadmin' }, async ({ request }) => {
     const response = await request.get(`${API_BASE}/users/1`);
     const body = await response.json();
     expect(body).toHaveProperty('role', 'superadmin');
   });
 
-  test('GET /users should return exactly 100 users by default', async ({ request }) => {
+  test('GET /users should return exactly 100 users by default', { tag: '@GetUsersShouldReturnExactly100UsersByDefault' }, async ({ request }) => {
     const response = await request.get(`${API_BASE}/users`);
     const body = await response.json();
     expect(body.users.length).toBe(100);
   });
 
-  test('POST /users/add should return 201 status', async ({ request }) => {
+  test('POST /users/add should return 201 status', { tag: '@PostUsersaddShouldReturn201Status' }, async ({ request }) => {
     const response = await request.post(`${API_BASE}/users/add`, {
       data: { firstName: 'Test', lastName: 'User' },
     });
     expect(response.status()).toBe(201);
   });
 
-  test('GET /users/1 should have department field', async ({ request }) => {
+  test('GET /users/1 should have department field', { tag: '@GetUsers1ShouldHaveDepartmentField' }, async ({ request }) => {
     const response = await request.get(`${API_BASE}/users/1`);
     const body = await response.json();
     expect(body).toHaveProperty('department', 'Engineering');
   });
 
-  test('GET /users/1 should have salary field', async ({ request }) => {
+  test('GET /users/1 should have salary field', { tag: '@GetUsers1ShouldHaveSalaryField' }, async ({ request }) => {
     const response = await request.get(`${API_BASE}/users/1`);
     const body = await response.json();
     expect(body).toHaveProperty('salary');
     expect(body.salary).toBeGreaterThan(50000);
   });
 
-  test('GET /users/1 should have permissions array', async ({ request }) => {
+  test('GET /users/1 should have permissions array', { tag: '@GetUsers1ShouldHavePermissionsArray' }, async ({ request }) => {
     const response = await request.get(`${API_BASE}/users/1`);
     const body = await response.json();
     expect(body).toHaveProperty('permissions');
@@ -318,7 +318,7 @@ test.describe('API Users', () => {
     expect(body.permissions).toContain('admin');
   });
 
-  test('GET /users should support sort by name', async ({ request }) => {
+  test('GET /users should support sort by name', { tag: '@GetUsersShouldSupportSortByName' }, async ({ request }) => {
     const response = await request.get(`${API_BASE}/users?sortBy=firstName&order=asc`);
     const body = await response.json();
     const first = body.users[0].firstName;
@@ -327,33 +327,33 @@ test.describe('API Users', () => {
   });
 
   // 🔄 FLAKY (3)
-  test('Flaky - User search API response', async ({ request }) => {
+  test('Flaky - User search API response', { tag: '@FlakyUserSearchApiResponse' }, async ({ request }) => {
     if (test.info().retry === 0) { expect(true).toBe(false); }
     const response = await request.get(`${API_BASE}/users/search?q=john`);
     expect(response.status()).toBe(200);
   });
 
-  test('Flaky - User auth token refresh', async ({ request }) => {
+  test('Flaky - User auth token refresh', { tag: '@FlakyUserAuthTokenRefresh' }, async ({ request }) => {
     if (test.info().retry === 0) { expect(true).toBe(false); }
     const response = await request.get(`${API_BASE}/users/1`);
     expect(response.status()).toBe(200);
   });
 
-  test('Flaky - User pagination API response', async ({ request }) => {
+  test('Flaky - User pagination API response', { tag: '@FlakyUserPaginationApiResponse' }, async ({ request }) => {
     if (test.info().retry === 0) { expect(true).toBe(false); }
     const response = await request.get(`${API_BASE}/users?limit=5&skip=10`);
     expect(response.status()).toBe(200);
   });
 
   // ⏭️ SKIP (2)
-  test.skip('Bulk delete users endpoint', async ({ request }) => {
+  test.skip('Bulk delete users endpoint', { tag: '@BulkDeleteUsersEndpoint' }, async ({ request }) => {
     const response = await request.post(`${API_BASE}/users/bulk-delete`, {
       data: { ids: [1, 2, 3] },
     });
     expect(response.status()).toBe(200);
   });
 
-  test.skip('Batch update user roles', async ({ request }) => {
+  test.skip('Batch update user roles', { tag: '@BatchUpdateUserRoles' }, async ({ request }) => {
     const response = await request.put(`${API_BASE}/users/batch-update`, {
       data: { ids: [1, 2], role: 'admin' },
     });

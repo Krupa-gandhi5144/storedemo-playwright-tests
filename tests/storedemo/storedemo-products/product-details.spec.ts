@@ -1,9 +1,9 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Product Details', () => {
+test.describe('Product Details', { tag: '@ProductDetails' }, () => {
 
   // ✅ PASS (15)
-  test('Product detail full page load and content deep check', async ({ page }) => {
+  test('Product detail full page load and content deep check', { tag: '@ProductDetailFullPageLoadAndContentDeepCheck' }, async ({ page }) => {
     await page.goto('/products');
     await page.waitForLoadState('networkidle');
     const productCard = page.locator('[class*="product"], [class*="card"], a[href*="product"]').first();
@@ -43,7 +43,7 @@ test.describe('Product Details', () => {
     await expect(header).toBeVisible();
   });
 
-  test('Product detail image gallery deep inspection', async ({ page }) => {
+  test('Product detail image gallery deep inspection', { tag: '@ProductDetailImageGalleryDeepInspection' }, async ({ page }) => {
     await page.goto('/products');
     await page.waitForLoadState('networkidle');
     const card = page.locator('[class*="product"], [class*="card"], a[href*="product"]').first();
@@ -77,7 +77,7 @@ test.describe('Product Details', () => {
     await expect(header).toBeVisible();
   });
 
-  test('Product detail multi-product browsing flow', async ({ page }) => {
+  test('Product detail multi-product browsing flow', { tag: '@ProductDetailMultiproductBrowsingFlow' }, async ({ page }) => {
     await page.goto('/products');
     await page.waitForLoadState('networkidle');
     for (let round = 0; round < 3; round++) {
@@ -106,7 +106,7 @@ test.describe('Product Details', () => {
     await expect(finalHeader).toBeVisible({ timeout: 10000 });
   });
 
-  test('Product detail no JS errors during full page interaction', async ({ page }) => {
+  test('Product detail no JS errors during full page interaction', { tag: '@ProductDetailNoJsErrorsDuringFullPageInteraction' }, async ({ page }) => {
     const errors: string[] = [];
     page.on('pageerror', (err) => errors.push(err.message));
     await page.goto('/products');
@@ -135,7 +135,7 @@ test.describe('Product Details', () => {
     expect(errors.length).toBe(0);
   });
 
-  test('Product detail page reload stability', async ({ page }) => {
+  test('Product detail page reload stability', { tag: '@ProductDetailPageReloadStability' }, async ({ page }) => {
     await page.goto('/products');
     const card = page.locator('[class*="product"], [class*="card"], a[href*="product"]').first();
     await expect(card).toBeVisible({ timeout: 10000 });
@@ -165,7 +165,7 @@ test.describe('Product Details', () => {
     await page.waitForTimeout(2000);
   });
 
-  test('Product detail CSS structure and bounding box validation', async ({ page }) => {
+  test('Product detail CSS structure and bounding box validation', { tag: '@ProductDetailCssStructureAndBoundingBoxValidation' }, async ({ page }) => {
     await page.goto('/products');
     await page.waitForLoadState('networkidle');
     const card = page.locator('[class*="product"], [class*="card"], a[href*="product"]').first();
@@ -195,7 +195,7 @@ test.describe('Product Details', () => {
     await page.waitForTimeout(2000);
   });
 
-  test('Product detail full scroll journey with viewport checks', async ({ page }) => {
+  test('Product detail full scroll journey with viewport checks', { tag: '@ProductDetailFullScrollJourneyWithViewportChecks' }, async ({ page }) => {
     await page.goto('/products');
     const card = page.locator('[class*="product"], [class*="card"], a[href*="product"]').first();
     await card.click();
@@ -218,7 +218,7 @@ test.describe('Product Details', () => {
     await expect(header).toBeVisible();
   });
 
-  test('Product detail page performance and load timing', async ({ page }) => {
+  test('Product detail page performance and load timing', { tag: '@ProductDetailPagePerformanceAndLoadTiming' }, async ({ page }) => {
     const start1 = Date.now();
     await page.goto('/products');
     const productsLoad = Date.now() - start1;
@@ -248,7 +248,7 @@ test.describe('Product Details', () => {
     await expect(page).toHaveURL(/products/);
   });
 
-  test('Product detail deep navigation home > products > detail > back > home', async ({ page }) => {
+  test('Product detail deep navigation home > products > detail > back > home', { tag: '@ProductDetailDeepNavigationHomeProductsDetailBackHome' }, async ({ page }) => {
     await page.goto('/');
     await expect(page).toHaveURL(/storedemo/);
     await page.waitForTimeout(2000);
@@ -279,7 +279,7 @@ test.describe('Product Details', () => {
     expect(finalTitle.length).toBeGreaterThan(0);
   });
 
-  test('Product detail links and buttons integrity', async ({ page }) => {
+  test('Product detail links and buttons integrity', { tag: '@ProductDetailLinksAndButtonsIntegrity' }, async ({ page }) => {
     await page.goto('/products');
     const card = page.locator('[class*="product"], [class*="card"], a[href*="product"]').first();
     await card.click();
@@ -311,7 +311,7 @@ test.describe('Product Details', () => {
     await page.waitForTimeout(2000);
   });
 
-  test('Product detail keyboard navigation', async ({ page }) => {
+  test('Product detail keyboard navigation', { tag: '@ProductDetailKeyboardNavigation' }, async ({ page }) => {
     await page.goto('/products');
     const card = page.locator('[class*="product"], [class*="card"], a[href*="product"]').first();
     await card.click();
@@ -335,7 +335,7 @@ test.describe('Product Details', () => {
     await expect(page).toHaveURL(/products/);
   });
 
-  test('Products page listing returns 200 with full assertions', async ({ page }) => {
+  test('Products page listing returns 200 with full assertions', { tag: '@ProductsPageListingReturns200WithFullAssertions' }, async ({ page }) => {
     const response = await page.goto('/products');
     expect(response?.status()).toBe(200);
     await page.waitForLoadState('networkidle');
@@ -361,7 +361,7 @@ test.describe('Product Details', () => {
     await page.waitForTimeout(2000);
   });
 
-  test('Product detail multi-reload with scroll', async ({ page }) => {
+  test('Product detail multi-reload with scroll', { tag: '@ProductDetailMultireloadWithScroll' }, async ({ page }) => {
     await page.goto('/products');
     const card = page.locator('[class*="product"], [class*="card"], a[href*="product"]').first();
     await card.click();
@@ -385,49 +385,49 @@ test.describe('Product Details', () => {
   });
 
   // ❌ FAIL (7)
-  test('Product detail shows 360-degree view button', async ({ page }) => {
+  test('Product detail shows 360-degree view button', { tag: '@ProductDetailShows360degreeViewButton' }, async ({ page }) => {
     await page.goto('/products');
     await page.waitForTimeout(2000);
     const btn = page.locator('[data-testid="360-view"]');
     await expect(btn).toBeVisible({ timeout: 3000 });
   });
 
-  test('Product detail has size selector', async ({ page }) => {
+  test('Product detail has size selector', { tag: '@ProductDetailHasSizeSelector' }, async ({ page }) => {
     await page.goto('/products');
     await page.waitForTimeout(2000);
     const selector = page.locator('[data-testid="size-selector"]');
     await expect(selector).toBeVisible({ timeout: 3000 });
   });
 
-  test('Product availability shows In Stock 150 units', async ({ page }) => {
+  test('Product availability shows In Stock 150 units', { tag: '@ProductAvailabilityShowsInStock150Units' }, async ({ page }) => {
     await page.goto('/products');
     await page.waitForTimeout(2000);
     const stock = page.locator('text=In Stock: 150 units');
     await expect(stock).toBeVisible({ timeout: 3000 });
   });
 
-  test('Product detail should show customer reviews section', async ({ page }) => {
+  test('Product detail should show customer reviews section', { tag: '@ProductDetailShouldShowCustomerReviewsSection' }, async ({ page }) => {
     await page.goto('/products');
     await page.waitForTimeout(2000);
     const reviews = page.locator('[data-testid="customer-reviews"]');
     await expect(reviews).toBeVisible({ timeout: 3000 });
   });
 
-  test('Product detail should display color swatches', async ({ page }) => {
+  test('Product detail should display color swatches', { tag: '@ProductDetailShouldDisplayColorSwatches' }, async ({ page }) => {
     await page.goto('/products');
     await page.waitForTimeout(2000);
     const swatches = page.locator('[data-testid="color-swatches"]');
     await expect(swatches).toBeVisible({ timeout: 3000 });
   });
 
-  test('Product detail should show related products carousel', async ({ page }) => {
+  test('Product detail should show related products carousel', { tag: '@ProductDetailShouldShowRelatedProductsCarousel' }, async ({ page }) => {
     await page.goto('/products');
     await page.waitForTimeout(2000);
     const carousel = page.locator('[data-testid="related-products"]');
     await expect(carousel).toBeVisible({ timeout: 3000 });
   });
 
-  test('Product detail should show add to wishlist button', async ({ page }) => {
+  test('Product detail should show add to wishlist button', { tag: '@ProductDetailShouldShowAddToWishlistButton' }, async ({ page }) => {
     await page.goto('/products');
     await page.waitForTimeout(2000);
     const wishlistBtn = page.locator('[data-testid="add-to-wishlist"]');
@@ -435,7 +435,7 @@ test.describe('Product Details', () => {
   });
 
   // 🔄 FLAKY (3)
-  test('Flaky - Product image gallery loads', async ({ page }) => {
+  test('Flaky - Product image gallery loads', { tag: '@FlakyProductImageGalleryLoads' }, async ({ page }) => {
     if (test.info().retry === 0) { expect(true).toBe(false); }
     await page.goto('/products');
     await page.waitForTimeout(3000);
@@ -443,7 +443,7 @@ test.describe('Product Details', () => {
     await expect(img).toBeVisible({ timeout: 10000 });
   });
 
-  test('Flaky - Product detail tab switching', async ({ page }) => {
+  test('Flaky - Product detail tab switching', { tag: '@FlakyProductDetailTabSwitching' }, async ({ page }) => {
     if (test.info().retry === 0) { expect(true).toBe(false); }
     await page.goto('/products');
     await page.waitForTimeout(3000);
@@ -455,7 +455,7 @@ test.describe('Product Details', () => {
     await expect(body).toBeVisible();
   });
 
-  test('Flaky - Product zoom feature', async ({ page }) => {
+  test('Flaky - Product zoom feature', { tag: '@FlakyProductZoomFeature' }, async ({ page }) => {
     if (test.info().retry === 0) { expect(true).toBe(false); }
     await page.goto('/products');
     await page.waitForTimeout(3000);
@@ -464,12 +464,12 @@ test.describe('Product Details', () => {
   });
 
   // ⏭️ SKIP (2)
-  test.skip('Product comparison feature', async ({ page }) => {
+  test.skip('Product comparison feature', { tag: '@ProductComparisonFeature' }, async ({ page }) => {
     await page.goto('/products');
     await page.click('[data-testid="compare-btn"]');
   });
 
-  test.skip('Product 3D model viewer', async ({ page }) => {
+  test.skip('Product 3D model viewer', { tag: '@Product3dModelViewer' }, async ({ page }) => {
     await page.goto('/products');
     await page.click('[data-testid="3d-viewer"]');
   });

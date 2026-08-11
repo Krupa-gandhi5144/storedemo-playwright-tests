@@ -1,9 +1,9 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('User Profile', () => {
+test.describe('User Profile', { tag: '@UserProfile' }, () => {
 
 
-  test('Profile page full load and content verification', async ({ page }) => {
+  test('Profile page full load and content verification', { tag: '@ProfilePageFullLoadAndContentVerification' }, async ({ page }) => {
     await page.goto('/');
     await expect(page).toHaveURL(/storedemo/);
     const title = await page.title();
@@ -41,7 +41,7 @@ test.describe('User Profile', () => {
     await expect(header).toBeVisible();
   });
 
-  test('Profile page multi-page navigation flow', async ({ page }) => {
+  test('Profile page multi-page navigation flow', { tag: '@ProfilePageMultipageNavigationFlow' }, async ({ page }) => {
     await page.goto('/');
     await expect(page).toHaveURL(/storedemo/);
     await page.waitForTimeout(2000);
@@ -71,7 +71,7 @@ test.describe('User Profile', () => {
     await expect(header).toBeVisible({ timeout: 10000 });
   });
 
-  test('Profile page no JS errors during interaction', async ({ page }) => {
+  test('Profile page no JS errors during interaction', { tag: '@ProfilePageNoJsErrorsDuringInteraction' }, async ({ page }) => {
     const errors: string[] = [];
     page.on('pageerror', (err) => errors.push(err.message));
     await page.goto('/');
@@ -97,7 +97,7 @@ test.describe('User Profile', () => {
     expect(errors.length).toBe(0);
   });
 
-  test('Profile page reload stability', async ({ page }) => {
+  test('Profile page reload stability', { tag: '@ProfilePageReloadStability' }, async ({ page }) => {
     await page.goto('/');
     const titleBefore = await page.title();
     const linksBefore = await page.locator('a').count();
@@ -119,7 +119,7 @@ test.describe('User Profile', () => {
     await page.waitForTimeout(2000);
   });
 
-  test('Profile page keyboard navigation', async ({ page }) => {
+  test('Profile page keyboard navigation', { tag: '@ProfilePageKeyboardNavigation' }, async ({ page }) => {
     await page.goto('/');
     await page.waitForLoadState('domcontentloaded');
     await page.waitForTimeout(2000);
@@ -141,7 +141,7 @@ test.describe('User Profile', () => {
     await expect(header).toBeVisible();
   });
 
-  test('Profile page CSS and visual layout', async ({ page }) => {
+  test('Profile page CSS and visual layout', { tag: '@ProfilePageCssAndVisualLayout' }, async ({ page }) => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
     const styles = page.locator('link[rel="stylesheet"], style');
@@ -166,7 +166,7 @@ test.describe('User Profile', () => {
     await page.waitForTimeout(2000);
   });
 
-  test('Profile page full scroll journey', async ({ page }) => {
+  test('Profile page full scroll journey', { tag: '@ProfilePageFullScrollJourney' }, async ({ page }) => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
     const scrollHeight = await page.evaluate(() => document.body.scrollHeight);
@@ -187,7 +187,7 @@ test.describe('User Profile', () => {
     await expect(header).toBeVisible();
   });
 
-  test('Profile page performance multi-load', async ({ page }) => {
+  test('Profile page performance multi-load', { tag: '@ProfilePagePerformanceMultiload' }, async ({ page }) => {
     for (let i = 0; i < 4; i++) {
       const start = Date.now();
       await page.goto('/');
@@ -205,7 +205,7 @@ test.describe('User Profile', () => {
     await page.waitForTimeout(2000);
   });
 
-  test('Profile page image deep inspection', async ({ page }) => {
+  test('Profile page image deep inspection', { tag: '@ProfilePageImageDeepInspection' }, async ({ page }) => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
     const allImages = page.locator('img');
@@ -228,7 +228,7 @@ test.describe('User Profile', () => {
     await page.waitForTimeout(2000);
   });
 
-  test('Profile page link and button integrity', async ({ page }) => {
+  test('Profile page link and button integrity', { tag: '@ProfilePageLinkAndButtonIntegrity' }, async ({ page }) => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
     const links = page.locator('a[href]');
@@ -253,7 +253,7 @@ test.describe('User Profile', () => {
     await page.waitForTimeout(2000);
   });
 
-  test('Profile page multi-cycle navigation stability', async ({ page }) => {
+  test('Profile page multi-cycle navigation stability', { tag: '@ProfilePageMulticycleNavigationStability' }, async ({ page }) => {
     for (let cycle = 0; cycle < 3; cycle++) {
       await page.goto('/');
       await expect(page).toHaveURL(/storedemo/);
@@ -273,7 +273,7 @@ test.describe('User Profile', () => {
     await expect(body).toBeVisible();
   });
 
-  test('Profile page document metadata', async ({ page }) => {
+  test('Profile page document metadata', { tag: '@ProfilePageDocumentMetadata' }, async ({ page }) => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
     const title = await page.title();
@@ -296,7 +296,7 @@ test.describe('User Profile', () => {
     await page.waitForTimeout(2000);
   });
 
-  test('Profile page back forward navigation', async ({ page }) => {
+  test('Profile page back forward navigation', { tag: '@ProfilePageBackForwardNavigation' }, async ({ page }) => {
     await page.goto('/');
     await page.waitForTimeout(2000);
     await page.goto('/products');
@@ -321,7 +321,7 @@ test.describe('User Profile', () => {
     await expect(body).toBeVisible();
   });
 
-  test('Profile page form inputs interaction', async ({ page }) => {
+  test('Profile page form inputs interaction', { tag: '@ProfilePageFormInputsInteraction' }, async ({ page }) => {
     await page.goto('/');
     await page.waitForLoadState('networkidle');
     const inputs = page.locator('input');
@@ -353,35 +353,35 @@ test.describe('User Profile', () => {
   });
 
 
-  test('User avatar placeholder shown when not logged in', async ({ page }) => {
+  test('User avatar placeholder shown when not logged in', { tag: '@UserAvatarPlaceholderShownWhenNotLoggedIn' }, async ({ page }) => {
     await page.goto('/');
     await page.waitForTimeout(2000);
     const avatar = page.locator('[data-testid="user-avatar-placeholder"]');
     await expect(avatar).toBeVisible({ timeout: 3000 });
   });
 
-  test('Profile page shows edit profile button', async ({ page }) => {
+  test('Profile page shows edit profile button', { tag: '@ProfilePageShowsEditProfileButton' }, async ({ page }) => {
     await page.goto('/');
     await page.waitForTimeout(2000);
     const editBtn = page.locator('[data-testid="edit-profile-btn"]');
     await expect(editBtn).toBeVisible({ timeout: 3000 });
   });
 
-  test('Profile displays order history tab', async ({ page }) => {
+  test('Profile displays order history tab', { tag: '@ProfileDisplaysOrderHistoryTab' }, async ({ page }) => {
     await page.goto('/');
     await page.waitForTimeout(2000);
     const orderTab = page.locator('text=Order History');
     await expect(orderTab).toBeVisible({ timeout: 3000 });
   });
 
-  test('Profile shows saved addresses section', async ({ page }) => {
+  test('Profile shows saved addresses section', { tag: '@ProfileShowsSavedAddressesSection' }, async ({ page }) => {
     await page.goto('/');
     await page.waitForTimeout(2000);
     const addresses = page.locator('[data-testid="saved-addresses"]');
     await expect(addresses).toBeVisible({ timeout: 3000 });
   });
 
-  test('Profile displays notification preferences', async ({ page }) => {
+  test('Profile displays notification preferences', { tag: '@ProfileDisplaysNotificationPreferences' }, async ({ page }) => {
     await page.goto('/');
     await page.waitForTimeout(2000);
     const notifications = page.locator('[data-testid="notification-preferences"]');
@@ -389,7 +389,7 @@ test.describe('User Profile', () => {
   });
 
   // 🔄 FLAKY
-  test('Flaky - Profile data fetch', async ({ page }) => {
+  test('Flaky - Profile data fetch', { tag: '@FlakyProfileDataFetch' }, async ({ page }) => {
     if (test.info().retry === 0) { expect(true).toBe(false); }
     await page.goto('/');
     await page.waitForTimeout(3000);
@@ -397,7 +397,7 @@ test.describe('User Profile', () => {
     expect(title.length).toBeGreaterThan(0);
   });
 
-  test('Flaky - Profile image load timing', async ({ page }) => {
+  test('Flaky - Profile image load timing', { tag: '@FlakyProfileImageLoadTiming' }, async ({ page }) => {
     if (test.info().retry === 0) { expect(true).toBe(false); }
     await page.goto('/');
     await page.waitForTimeout(3000);
@@ -405,7 +405,7 @@ test.describe('User Profile', () => {
     await expect(img).toBeVisible({ timeout: 10000 });
   });
 
-  test('Flaky - Profile session persistence', async ({ page }) => {
+  test('Flaky - Profile session persistence', { tag: '@FlakyProfileSessionPersistence' }, async ({ page }) => {
     if (test.info().retry === 0) { expect(true).toBe(false); }
     await page.goto('/');
     await page.waitForTimeout(3000);
@@ -413,13 +413,10 @@ test.describe('User Profile', () => {
   });
 
 
-  test.skip('Upload profile picture', async ({ page }) => {
+  test.skip('Upload profile picture', { tag: '@UploadProfilePicture' }, async ({ page }) => {
     await page.goto('/');
   });
 
-  // test.skip('Delete user account', async ({ page }) => {
-  //   await page.goto('/');
-  // });
 
 
 });

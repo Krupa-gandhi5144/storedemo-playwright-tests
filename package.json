@@ -12,15 +12,16 @@
     "test:auth": "npx playwright test tests/user-authentication.spec.ts",
     "test:profile": "npx playwright test tests/user-profile.spec.ts",
     "test:api-users": "npx playwright test tests/api-users.spec.ts",
-    "test:api-products": "npx playwright test tests/api-products.spec.ts"
+    "test:api-products": "npx playwright test tests/api-products.spec.ts",
+    "test:usage-burn": "./tests/scripts/usage-burn.sh"
   },
   "devDependencies": {
     "@playwright/test": "^1.49.1",
-    "@types/node": "^25.3.5"
+    "@testdino/playwright": "^2.3.0",
+    "@types/node": "^25.3.5",
+    "tdpw": "^1.0.38"
   },
   "dependencies": {
-    "@testdino/playwright": "file:testdino-playwright-2.2.0.tgz",
-    "dotenv": "^17.3.1",
-    "tdpw": "^1.0.36"
+    "dotenv": "^17.3.1"
   }
 }

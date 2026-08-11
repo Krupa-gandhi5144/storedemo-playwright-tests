@@ -2,10 +2,10 @@ import { test, expect } from '@playwright/test';
 
 const API_BASE = 'https://dummyjson.com';
 
-test.describe('API Products', () => {
+test.describe('API Products', { tag: '@ApiProducts' }, () => {
 
   // ✅ PASS (25)
-  test('GET /products full response structure validation', async ({ request }) => {
+  test('GET /products full response structure validation', { tag: '@GetProductsFullResponseStructureValidation' }, async ({ request }) => {
     const response = await request.get(`${API_BASE}/products`);
     expect(response.status()).toBe(200);
     const body = await response.json();
@@ -35,7 +35,7 @@ test.describe('API Products', () => {
     expect(Array.isArray(firstProduct.images)).toBe(true);
   });
 
-  test('GET /products iterate and validate first 10 products', async ({ request }) => {
+  test('GET /products iterate and validate first 10 products', { tag: '@GetProductsIterateAndValidateFirst10Products' }, async ({ request }) => {
     const response = await request.get(`${API_BASE}/products?limit=10`);
     expect(response.status()).toBe(200);
     const body = await response.json();
@@ -65,7 +65,7 @@ test.describe('API Products', () => {
     }
   });
 
-  test('GET /products individual product deep validation for products 1-10', async ({ request }) => {
+  test('GET /products individual product deep validation for products 1-10', { tag: '@GetProductsIndividualProductDeepValidationForProducts110' }, async ({ request }) => {
     for (let id = 1; id <= 10; id++) {
       const response = await request.get(`${API_BASE}/products/${id}`);
       expect(response.status()).toBe(200);
@@ -86,7 +86,7 @@ test.describe('API Products', () => {
     }
   });
 
-  test('GET /products pagination full test with skip and limit', async ({ request }) => {
+  test('GET /products pagination full test with skip and limit', { tag: '@GetProductsPaginationFullTestWithSkipAndLimit' }, async ({ request }) => {
     const limits = [1, 3, 5, 10, 15, 20];
     for (const limit of limits) {
       const response = await request.get(`${API_BASE}/products?limit=${limit}`);
@@ -105,7 +105,7 @@ test.describe('API Products', () => {
     }
   });
 
-  test('GET /products/categories full validation', async ({ request }) => {
+  test('GET /products/categories full validation', { tag: '@GetProductscategoriesFullValidation' }, async ({ request }) => {
     const response = await request.get(`${API_BASE}/products/categories`);
     expect(response.status()).toBe(200);
     const categories = await response.json();
@@ -121,7 +121,7 @@ test.describe('API Products', () => {
     }
   });
 
-  test('GET /products/search with multiple queries', async ({ request }) => {
+  test('GET /products/search with multiple queries', { tag: '@GetProductssearchWithMultipleQueries' }, async ({ request }) => {
     const queries = ['phone', 'laptop', 'perfume', 'cream', 'oil'];
     for (const query of queries) {
       const response = await request.get(`${API_BASE}/products/search?q=${query}`);
@@ -134,7 +134,7 @@ test.describe('API Products', () => {
     }
   });
 
-  test('POST /products/add full validation', async ({ request }) => {
+  test('POST /products/add full validation', { tag: '@PostProductsaddFullValidation' }, async ({ request }) => {
     const newProduct = { title: 'Test Product', price: 29.99, description: 'A test product', category: 'test' };
     const response = await request.post(`${API_BASE}/products/add`, { data: newProduct });
     expect(response.status()).toBe(200);
@@ -147,7 +147,7 @@ test.describe('API Products', () => {
     expect(body).toHaveProperty('category', 'test');
   });
 
-  test('PUT /products update multiple products', async ({ request }) => {
+  test('PUT /products update multiple products', { tag: '@PutProductsUpdateMultipleProducts' }, async ({ request }) => {
     for (let id = 1; id <= 5; id++) {
       const response = await request.put(`${API_BASE}/products/${id}`, {
         data: { title: `Updated Product ${id}` },
@@ -159,7 +159,7 @@ test.describe('API Products', () => {
     }
   });
 
-  test('DELETE /products delete multiple products', async ({ request }) => {
+  test('DELETE /products delete multiple products', { tag: '@DeleteProductsDeleteMultipleProducts' }, async ({ request }) => {
     for (let id = 1; id <= 5; id++) {
       const response = await request.delete(`${API_BASE}/products/${id}`);
       expect(response.status()).toBe(200);
@@ -170,7 +170,7 @@ test.describe('API Products', () => {
     }
   });
 
-  test('GET /products cross-compare list vs individual', async ({ request }) => {
+  test('GET /products cross-compare list vs individual', { tag: '@GetProductsCrosscompareListVsIndividual' }, async ({ request }) => {
     const listResponse = await request.get(`${API_BASE}/products?limit=5`);
     const listBody = await listResponse.json();
     expect(listBody.products.length).toBe(5);
@@ -184,7 +184,7 @@ test.describe('API Products', () => {
     }
   });
 
-  test('GET /products response time validation across endpoints', async ({ request }) => {
+  test('GET /products response time validation across endpoints', { tag: '@GetProductsResponseTimeValidationAcrossEndpoints' }, async ({ request }) => {
     const endpoints = [
       `${API_BASE}/products`,
       `${API_BASE}/products/1`,
@@ -204,7 +204,7 @@ test.describe('API Products', () => {
     }
   });
 
-  test('GET /products verify product data types consistency', async ({ request }) => {
+  test('GET /products verify product data types consistency', { tag: '@GetProductsVerifyProductDataTypesConsistency' }, async ({ request }) => {
     const response = await request.get(`${API_BASE}/products?limit=15`);
     const body = await response.json();
     for (const product of body.products) {
@@ -224,7 +224,7 @@ test.describe('API Products', () => {
     }
   });
 
-  test('POST /products/add with various product data', async ({ request }) => {
+  test('POST /products/add with various product data', { tag: '@PostProductsaddWithVariousProductData' }, async ({ request }) => {
     const products = [
       { title: 'Widget A', price: 9.99 },
       { title: 'Widget B', price: 19.99, description: 'B widget' },
@@ -241,7 +241,7 @@ test.describe('API Products', () => {
     }
   });
 
-  test('GET /products verify image URLs in products', async ({ request }) => {
+  test('GET /products verify image URLs in products', { tag: '@GetProductsVerifyImageUrlsInProducts' }, async ({ request }) => {
     const response = await request.get(`${API_BASE}/products?limit=10`);
     const body = await response.json();
     for (const product of body.products) {
@@ -257,7 +257,7 @@ test.describe('API Products', () => {
     }
   });
 
-  test('GET /products sequential category fetch and validation', async ({ request }) => {
+  test('GET /products sequential category fetch and validation', { tag: '@GetProductsSequentialCategoryFetchAndValidation' }, async ({ request }) => {
     const catResponse = await request.get(`${API_BASE}/products/categories`);
     const categories = await catResponse.json();
     expect(categories.length).toBeGreaterThan(0);
@@ -272,79 +272,79 @@ test.describe('API Products', () => {
   });
 
   // ❌ FAIL (7)
-  test('GET /products/1 should have warranty field', async ({ request }) => {
+  test('GET /products/1 should have warranty field', { tag: '@GetProducts1ShouldHaveWarrantyField' }, async ({ request }) => {
     const response = await request.get(`${API_BASE}/products/1`);
     const body = await response.json();
     expect(body).toHaveProperty('warranty', '2 years');
   });
 
-  test('GET /products should return exactly 200 products', async ({ request }) => {
+  test('GET /products should return exactly 200 products', { tag: '@GetProductsShouldReturnExactly200Products' }, async ({ request }) => {
     const response = await request.get(`${API_BASE}/products`);
     const body = await response.json();
     expect(body.products.length).toBe(200);
   });
 
-  test('POST /products/add should return 201 status', async ({ request }) => {
+  test('POST /products/add should return 201 status', { tag: '@PostProductsaddShouldReturn201Status' }, async ({ request }) => {
     const response = await request.post(`${API_BASE}/products/add`, {
       data: { title: 'Test', price: 9.99 },
     });
     expect(response.status()).toBe(201);
   });
 
-  test('GET /products/1 should have manufacturer field', async ({ request }) => {
+  test('GET /products/1 should have manufacturer field', { tag: '@GetProducts1ShouldHaveManufacturerField' }, async ({ request }) => {
     const response = await request.get(`${API_BASE}/products/1`);
     const body = await response.json();
     expect(body).toHaveProperty('manufacturer', 'Apple Inc.');
   });
 
-  test('GET /products/1 should have weight field', async ({ request }) => {
+  test('GET /products/1 should have weight field', { tag: '@GetProducts1ShouldHaveWeightField' }, async ({ request }) => {
     const response = await request.get(`${API_BASE}/products/1`);
     const body = await response.json();
     expect(body).toHaveProperty('weight_kg', 0.5);
   });
 
-  test('GET /products/1 should have shipping info', async ({ request }) => {
+  test('GET /products/1 should have shipping info', { tag: '@GetProducts1ShouldHaveShippingInfo' }, async ({ request }) => {
     const response = await request.get(`${API_BASE}/products/1`);
     const body = await response.json();
     expect(body).toHaveProperty('shippingInfo');
     expect(body.shippingInfo).toHaveProperty('freeShipping', true);
   });
 
-  test('GET /products should support sort by price', async ({ request }) => {
+  test('GET /products should support sort by price', { tag: '@GetProductsShouldSupportSortByPrice' }, async ({ request }) => {
     const response = await request.get(`${API_BASE}/products?sortBy=price&order=asc`);
     const body = await response.json();
     expect(body.products[0].price).toBeLessThan(body.products[1].price);
   });
 
   // 🔄 FLAKY (3)
-  test('Flaky - Product search API response', async ({ request }) => {
+  test('Flaky - Product search API response', { tag: '@FlakyProductSearchApiResponse' }, async ({ request }) => {
     if (test.info().retry === 0) { expect(true).toBe(false); }
     const response = await request.get(`${API_BASE}/products/search?q=phone`);
     expect(response.status()).toBe(200);
   });
 
-  test('Flaky - Product category API timing', async ({ request }) => {
+  test('Flaky - Product category API timing', { tag: '@FlakyProductCategoryApiTiming' }, async ({ request }) => {
     if (test.info().retry === 0) { expect(true).toBe(false); }
     const response = await request.get(`${API_BASE}/products/categories`);
     const body = await response.json();
     expect(Array.isArray(body)).toBe(true);
   });
 
-  test('Flaky - Product pagination API response', async ({ request }) => {
+  test('Flaky - Product pagination API response', { tag: '@FlakyProductPaginationApiResponse' }, async ({ request }) => {
     if (test.info().retry === 0) { expect(true).toBe(false); }
     const response = await request.get(`${API_BASE}/products?limit=5&skip=10`);
     expect(response.status()).toBe(200);
   });
 
   // ⏭️ SKIP (2)
-  test.skip('Bulk update product prices', async ({ request }) => {
+  test.skip('Bulk update product prices', { tag: '@BulkUpdateProductPrices' }, async ({ request }) => {
     const response = await request.put(`${API_BASE}/products/bulk-update`, {
       data: { ids: [1, 2], price: 19.99 },
     });
     expect(response.status()).toBe(200);
   });
 
-  test.skip('Batch delete products', async ({ request }) => {
+  test.skip('Batch delete products', { tag: '@BatchDeleteProducts' }, async ({ request }) => {
     const response = await request.delete(`${API_BASE}/products/batch-delete`, {
       data: { ids: [1, 2, 3] },
     });

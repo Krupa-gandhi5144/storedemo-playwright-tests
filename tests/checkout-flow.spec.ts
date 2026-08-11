@@ -1,9 +1,9 @@
 import { test, expect } from '@playwright/test';
 
-test.describe('Checkout Flow', () => {
+test.describe('Checkout Flow', { tag: '@CheckoutFlow' }, () => {
 
   // ✅ PASS (15)
-  test('Checkout flow full page load and structure verification', async ({ page }) => {
+  test('Checkout flow full page load and structure verification', { tag: ['@CheckoutFlowFullPageLoadAndStructureVerification', '@Regression'] }, async ({ page }) => {
     const response = await page.goto('/');
     expect(response?.status()).toBe(200);
     await page.waitForLoadState('networkidle');
@@ -36,7 +36,7 @@ test.describe('Checkout Flow', () => {
     expect(url).toContain('https');
   });
 
-  test('Checkout flow complete navigation: home > products > detail > back', async ({ page }) => {
+  test('Checkout flow complete navigation: home > products > detail > back', { tag: '@CheckoutFlowCompleteNavigationHomeProductsDetailBack' }, async ({ page }) => {
     await page.goto('/');
     await expect(page).toHaveURL(/storedemo/);
     await page.waitForTimeout(2000);
@@ -69,7 +69,7 @@ test.describe('Checkout Flow', () => {
     await expect(finalBody).toBeVisible();
   });
 
-  test('Checkout flow products page deep content check', async ({ page }) => {
+  test('Checkout flow products page deep content check', { tag: '@CheckoutFlowProductsPageDeepContentCheck' }, async ({ page }) => {
     await page.goto('/products');
     await page.waitForLoadState('networkidle');
     const body = page.locator('body');
@@ -103,7 +103,7 @@ test.describe('Checkout Flow', () => {
     await page.waitForTimeout(2000);
   });
 
-  test('Checkout flow no JS errors during complete interaction', async ({ page }) => {
+  test('Checkout flow no JS errors during complete interaction', { tag: '@CheckoutFlowNoJsErrorsDuringCompleteInteraction' }, async ({ page }) => {
     const errors: string[] = [];
     page.on('pageerror', (err) => errors.push(err.message));
     await page.goto('/');
@@ -132,7 +132,7 @@ test.describe('Checkout Flow', () => {
     expect(errors.length).toBe(0);
   });
 
-  test('Checkout flow multi-cycle page navigation', async ({ page }) => {
+  test('Checkout flow multi-cycle page navigation', { tag: '@CheckoutFlowMulticyclePageNavigation' }, async ({ page }) => {
     for (let cycle = 0; cycle < 3; cycle++) {
       await page.goto('/');
       await expect(page).toHaveURL(/storedemo/);
@@ -156,7 +156,7 @@ test.describe('Checkout Flow', () => {
     await expect(body).toBeVisible();
   });
 
-  test('Checkout flow reload stability', async ({ page }) => {
+  test('Checkout flow reload stability', { tag: '@CheckoutFlowReloadStability' }, async ({ page }) => {
     await page.goto('/products');
     const titleBefore = await page.title();
     const linksBefore = await page.locator('a').count();
@@ -178,7 +178,7 @@ test.describe('Checkout Flow', () => {
     await expect(header).toBeVisible();
   });
 
-  test('Checkout flow HTTPS enforcement across pages', async ({ page }) => {
+  test('Checkout flow HTTPS enforcement across pages', { tag: '@CheckoutFlowHttpsEnforcementAcrossPages' }, async ({ page }) => {
     await page.goto('/');
     await expect(page).toHaveURL(/https/);
     await page.waitForTimeout(2000);
@@ -203,7 +203,7 @@ test.describe('Checkout Flow', () => {
     await expect(page).toHaveURL(/https/);
   });
 
-  test('Checkout flow performance multi-page timing', async ({ page }) => {
+  test('Checkout flow performance multi-page timing', { tag: '@CheckoutFlowPerformanceMultipageTiming' }, async ({ page }) => {
     const start1 = Date.now();
     await page.goto('/');
     expect(Date.now() - start1).toBeLessThan(30000);
@@ -230,7 +230,7 @@ test.describe('Checkout Flow', () => {
     await page.waitForTimeout(2000);
   });
 
-  test('Checkout flow full scroll journey on products page', async ({ page }) => {
+  test('Checkout flow full scroll journey on products page', { tag: '@CheckoutFlowFullScrollJourneyOnProductsPage' }, async ({ page }) => {
     await page.goto('/products');
     await page.waitForLoadState('networkidle');
     const scrollHeight = await page.evaluate(() => document.body.scrollHeight);
@@ -249,7 +249,7 @@ test.describe('Checkout Flow', () => {
     await expect(header).toBeVisible();
   });
 
-  test('Checkout flow keyboard navigation', async ({ page }) => {
+  test('Checkout flow keyboard navigation', { tag: '@CheckoutFlowKeyboardNavigation' }, async ({ page }) => {
     await page.goto('/products');
     await page.waitForLoadState('domcontentloaded');
     await page.waitForTimeout(2000);
@@ -273,7 +273,7 @@ test.describe('Checkout Flow', () => {
     await expect(body).toBeVisible();
   });
 
-  test('Checkout flow CSS and visual structure', async ({ page }) => {
+  test('Checkout flow CSS and visual structure', { tag: '@CheckoutFlowCssAndVisualStructure' }, async ({ page }) => {
     await page.goto('/products');
     await page.waitForLoadState('networkidle');
     const styles = page.locator('link[rel="stylesheet"], style');
@@ -297,7 +297,7 @@ test.describe('Checkout Flow', () => {
     expect(await viewport.count()).toBeGreaterThan(0);
   });
 
-  test('Checkout flow link integrity on products page', async ({ page }) => {
+  test('Checkout flow link integrity on products page', { tag: '@CheckoutFlowLinkIntegrityOnProductsPage' }, async ({ page }) => {
     await page.goto('/products');
     await page.waitForLoadState('networkidle');
     const allLinks = page.locator('a[href]');
@@ -322,7 +322,7 @@ test.describe('Checkout Flow', () => {
     await page.waitForTimeout(2000);
   });
 
-  test('Checkout flow deep back/forward navigation', async ({ page }) => {
+  test('Checkout flow deep back/forward navigation', { tag: '@CheckoutFlowDeepBackforwardNavigation' }, async ({ page }) => {
     await page.goto('/');
     await page.waitForTimeout(2000);
     await page.goto('/products');
@@ -353,7 +353,7 @@ test.describe('Checkout Flow', () => {
     await expect(body).toBeVisible();
   });
 
-  test('Checkout flow image verification across pages', async ({ page }) => {
+  test('Checkout flow image verification across pages', { tag: '@CheckoutFlowImageVerificationAcrossPages' }, async ({ page }) => {
     await page.goto('/products');
     await page.waitForLoadState('networkidle');
     const images = page.locator('img');
@@ -377,49 +377,49 @@ test.describe('Checkout Flow', () => {
   });
 
   // ❌ FAIL 
-  test('Checkout page shows shipping form by default', async ({ page }) => {
+  test('Checkout page shows shipping form by default', { tag: '@CheckoutPageShowsShippingFormByDefault' }, async ({ page }) => {
     await page.goto('/checkout');
     await page.waitForTimeout(2000);
     const form = page.locator('[data-testid="shipping-form"]');
     await expect(form).toBeVisible({ timeout: 3000 });
   });
 
-  test('Payment methods include PayPal option', async ({ page }) => {
+  test('Payment methods include PayPal option', { tag: '@PaymentMethodsIncludePaypalOption' }, async ({ page }) => {
     await page.goto('/products');
     await page.waitForTimeout(2000);
     const paypal = page.locator('text=Pay with PayPal');
     await expect(paypal).toBeVisible({ timeout: 3000 });
   });
 
-  test('Order summary shows tax calculation', async ({ page }) => {
+  test('Order summary shows tax calculation', { tag: '@OrderSummaryShowsTaxCalculation' }, async ({ page }) => {
     await page.goto('/products');
     await page.waitForTimeout(2000);
     const tax = page.locator('[data-testid="tax-amount"]');
     await expect(tax).toBeVisible({ timeout: 3000 });
   });
 
-  test('Checkout displays order confirmation number', async ({ page }) => {
+  test('Checkout displays order confirmation number', { tag: '@CheckoutDisplaysOrderConfirmationNumber' }, async ({ page }) => {
     await page.goto('/products');
     await page.waitForTimeout(2000);
     const orderNum = page.locator('[data-testid="order-confirmation-number"]');
     await expect(orderNum).toBeVisible({ timeout: 3000 });
   });
 
-  test('Checkout shows estimated delivery date', async ({ page }) => {
+  test('Checkout shows estimated delivery date', { tag: '@CheckoutShowsEstimatedDeliveryDate' }, async ({ page }) => {
     await page.goto('/products');
     await page.waitForTimeout(2000);
     const delivery = page.locator('[data-testid="estimated-delivery"]');
     await expect(delivery).toBeVisible({ timeout: 3000 });
   });
 
-  test('Checkout progress bar shows 4 steps', async ({ page }) => {
+  test('Checkout progress bar shows 4 steps', { tag: '@CheckoutProgressBarShows4Steps' }, async ({ page }) => {
     await page.goto('/products');
     await page.waitForTimeout(2000);
     const steps = page.locator('[data-testid="checkout-step"]');
     await expect(steps).toHaveCount(4, { timeout: 3000 });
   });
 
-  test('Checkout displays gift wrap option', async ({ page }) => {
+  test('Checkout displays gift wrap option', { tag: '@CheckoutDisplaysGiftWrapOption' }, async ({ page }) => {
     await page.goto('/products');
     await page.waitForTimeout(2000);
     const giftWrap = page.locator('[data-testid="gift-wrap-option"]');
@@ -427,14 +427,14 @@ test.describe('Checkout Flow', () => {
   });
 
   // 🔄 FLAKY (3)
-  test('Flaky - Checkout redirect timing', async ({ page }) => {
+  test('Flaky - Checkout redirect timing', { tag: '@FlakyCheckoutRedirectTiming' }, async ({ page }) => {
     if (test.info().retry === 0) { expect(true).toBe(false); }
     await page.goto('/');
     await page.waitForTimeout(3000);
     await expect(page).toHaveURL(/storedemo/);
   });
 
-  test('Flaky - Payment gateway connection', async ({ page }) => {
+  test('Flaky - Payment gateway connection', { tag: '@FlakyPaymentGatewayConnection' }, async ({ page }) => {
     if (test.info().retry === 0) { expect(true).toBe(false); }
     await page.goto('/products');
     await page.waitForTimeout(3000);
@@ -442,7 +442,7 @@ test.describe('Checkout Flow', () => {
     await expect(body).toBeVisible();
   });
 
-  test('Flaky - Checkout form validation timing', async ({ page }) => {
+  test('Flaky - Checkout form validation timing', { tag: '@FlakyCheckoutFormValidationTiming' }, async ({ page }) => {
     if (test.info().retry === 0) { expect(true).toBe(false); }
     await page.goto('/products');
     await page.waitForTimeout(3000);
@@ -451,11 +451,11 @@ test.describe('Checkout Flow', () => {
   });
 
   // ⏭️ SKIP (2)
-  test.skip('Guest checkout without account', async ({ page }) => {
+  test.skip('Guest checkout without account', { tag: '@GuestCheckoutWithoutAccount' }, async ({ page }) => {
     await page.goto('/checkout');
   });
 
-  test.skip('Express checkout with saved payment', async ({ page }) => {
+  test.skip('Express checkout with saved payment', { tag: '@ExpressCheckoutWithSavedPayment' }, async ({ page }) => {
     await page.goto('/checkout');
   });
 
