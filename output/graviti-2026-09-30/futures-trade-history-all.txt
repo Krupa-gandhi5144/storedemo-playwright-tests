@@ -1,0 +1,444 @@
+- navigation:
+  - link "Logo":
+    - /url: /auth/dashboard
+    - img "Logo"
+  - link "logo":
+    - /url: /auth/dashboard
+    - img "logo"
+  - button "Toggle Menu":
+  - navigation:
+    - list:
+      - link "Dashboard":
+        - /url: /auth/dashboard
+      - link "Markets":
+        - /url: /auth/markets
+      - link "Futures":
+        - /url: /perpetual
+      - link "Options":
+        - /url: /optionTrading
+      - link "Copy Trading":
+        - /url: /copy-trading
+      - link "Referral":
+        - /url: /auth/referral
+      - link "Community":
+        - /url: https://graviti.exchange/graviti99
+      - link "Competitions":
+        - /url: /auth/competition
+  - list:
+    - link "Wallet":
+      - /url: /auth/wallet-home
+      - generic: Wallet
+    - button "188 unread notifications":
+      - generic "188 unread notifications": 99+
+    - button "User":
+      - img "User"
+  - button
+- heading "BTCUSDT" [level=2]
+- generic: Perpetual
+- heading "83,342.50" [level=3]
+- text: 83,334.10
+- generic: Index Price
+- generic: 83,380.67
+- generic: 24h Change
+- generic: "-625.07(-0.75%)"
+- generic: 24h High
+- generic: 84,556
+- generic: 24h Low
+- generic: 82,813.8
+- generic: 24h Volume (BTC)
+- generic: 45,129.29
+- generic: 24h Volume (USDT)
+- generic: 3,771,650,688.02
+- generic: Open Interest(BTC)
+- generic: 56,957.096
+- generic: Funding Rate / Countdown
+- text: 0.0010% /
+- paragraph: 00:33:12
+- button:
+- heading "Chart" [level=2]
+- tablist:
+  - tab "Trading view" [selected]
+  - tab "Depth"
+- tabpanel "Trading view":
+  - iframe [id="tradingview_3ca9a"] [name="tradingview_3ca9a"]
+- tablist:
+  - tab "Order Book" [selected]
+  - tab "Recent Trades"
+- tabpanel "Order Book":
+  - tablist:
+    - tab [selected]:
+    - tab:
+    - tab:
+  - tabpanel:
+    - text: Price
+    - generic: (USDT)
+    - text: Size
+    - generic: (BTC)
+    - text: Total
+    - generic: (BTC)
+  - tabpanel:
+    - generic: 83,345.90
+    - generic: "0.003"
+    - generic: "10.427"
+    - generic: 83,345.80
+    - generic: "0.002"
+    - generic: "10.424"
+    - generic: 83,345.70
+    - generic: "0.001"
+    - generic: "10.422"
+    - generic: 83,345.60
+    - generic: "0.001"
+    - generic: "10.421"
+    - generic: 83,345.40
+    - generic: "0.002"
+    - generic: "10.420"
+    - generic: 83,345.30
+    - generic: "0.002"
+    - generic: "10.418"
+    - generic: 83,345.10
+    - generic: "2.747"
+    - generic: "10.416"
+    - generic: 83,345.00
+    - generic: "0.008"
+    - generic: "7.669"
+    - generic: 83,344.80
+    - generic: "0.002"
+    - generic: "7.661"
+    - generic: 83,344.70
+    - generic: "0.001"
+    - generic: "7.659"
+    - generic: 83,344.30
+    - generic: "0.001"
+    - generic: "7.657"
+    - generic: 83,344.20
+    - generic: "0.002"
+    - generic: "7.656"
+    - generic: 83,343.70
+    - generic: "0.547"
+    - generic: "7.654"
+    - generic: 83,343.60
+    - generic: "0.023"
+    - generic: "7.108"
+    - generic: 83,343.30
+    - generic: "0.002"
+    - generic: "7.085"
+    - generic: 83,343.00
+    - generic: "0.257"
+    - generic: "7.083"
+    - generic: 83,342.70
+    - generic: "0.239"
+    - generic: "6.826"
+    - generic: 83,342.60
+    - generic: "0.001"
+    - generic: "6.587"
+    - generic: 83,342.50
+    - generic: "0.876"
+    - generic: "6.586"
+    - generic: 83,342.40
+    - generic: "5.710"
+    - generic: "5.710"
+    - heading "83,342.50" [level=4]
+    - img "icon"
+    - generic: ≈83,334.10
+    - generic: 83,342.30
+    - generic: "1.254"
+    - generic: "1.254"
+    - generic: 83,342.20
+    - generic: "0.003"
+    - generic: "1.257"
+    - generic: 83,341.80
+    - generic: "0.001"
+    - generic: "1.257"
+    - generic: 83,340.90
+    - generic: "0.002"
+    - generic: "1.259"
+    - generic: 83,340.50
+    - generic: "0.004"
+    - generic: "1.263"
+    - generic: 83,340.40
+    - generic: "0.401"
+    - generic: "1.664"
+    - generic: 83,340.30
+    - generic: "0.337"
+    - generic: "2.002"
+    - generic: 83,340.10
+    - generic: "0.339"
+    - generic: "2.340"
+    - generic: 83,340.00
+    - generic: "0.035"
+    - generic: "2.376"
+    - generic: 83,339.90
+    - generic: "0.337"
+    - generic: "2.713"
+    - generic: 83,339.70
+    - generic: "0.337"
+    - generic: "3.050"
+    - generic: 83,339.50
+    - generic: "0.002"
+    - generic: "3.052"
+    - generic: 83,339.30
+    - generic: "0.002"
+    - generic: "3.054"
+    - generic: 83,338.40
+    - generic: "0.004"
+    - generic: "3.058"
+    - generic: 83,338.30
+    - generic: "0.001"
+    - generic: "3.058"
+    - generic: 83,337.90
+    - generic: "0.002"
+    - generic: "3.060"
+    - generic: 83,337.60
+    - generic: "0.002"
+    - generic: "3.062"
+    - generic: 83,337.50
+    - generic: "0.002"
+    - generic: "3.064"
+    - generic: 83,336.90
+    - generic: "0.002"
+    - generic: "3.066"
+    - generic: 83,336.60
+    - generic: "0.001"
+    - generic: "3.067"
+    - generic: B
+    - text: 23%
+    - text: 77%
+    - generic: S
+  - log
+  - generic: "0.01"
+  - combobox
+- list:
+  - link "ISOLATED":
+    - /url: /perpetual/BTC_USDT#
+  - button:
+  - button "10X":
+    - link "10X":
+      - /url: /perpetual/BTC_USDT#
+    - button:
+- button "Fee Calculator"
+- button "Buy"
+- button "Sell"
+- log
+- generic: Limit
+- combobox
+- paragraph:
+  - text: "Available :"
+  - strong: 95.18 USDT
+- generic: Order Price
+- textbox: "83311.5"
+- heading "USDT" [level=3]
+- button:
+- button:
+- generic: Order By Value
+- textbox "Order By Value":
+  - /placeholder: 83.34 - 125013750
+  - text: "0"
+- log
+- generic: USDT
+- combobox
+- generic: 0%
+- generic: 25%
+- generic: 50%
+- generic: 75%
+- generic: 100%
+- slider "Accessibility label"
+- list:
+  - text: Quantity
+  - text: "--"
+  - generic: / --
+  - text: BTC
+  - text: Cost
+  - text: "--"
+  - generic: / --
+  - text: USDT
+- checkbox "Take Profit / Stop Loss"
+- generic: Take Profit / Stop Loss
+- checkbox "Reduce Only"
+- generic: Reduce Only
+- button "Buy / Long"
+- tablist:
+  - tab "Position (1)"
+  - tab "P&L"
+  - tab "Current Orders"
+  - tab "Order History"
+  - tab "Trade History" [selected]
+- tabpanel "Trade History":
+  - list:
+    - checkbox [checked]
+    - generic: All markets
+    - link "All Orders":
+      - /url: /auth/exchange-history
+  - list:
+    - button "Last 7D"
+    - button "Last 30D"
+    - button "Last 180D" [active]
+  - tabpanel:
+    - table:
+      - rowgroup:
+        - row "Contracts Filled Quantity Filled Price Trade type Order Type Filled Type Fee Paid Goods and Services Tax (GST) calculated at 18% of the fee paid. Transaction ID Transaction Time":
+          - columnheader "Contracts"
+          - columnheader "Filled Quantity"
+          - columnheader "Filled Price"
+          - columnheader "Trade type"
+          - columnheader "Order Type"
+          - columnheader "Filled Type"
+          - columnheader "Fee Paid"
+          - columnheader "Goods and Services Tax (GST) calculated at 18% of the fee paid.":
+            - generic "Goods and Services Tax (GST) calculated at 18% of the fee paid.": GST
+          - columnheader "Transaction ID"
+          - columnheader "Transaction Time"
+      - rowgroup:
+        - row "B3USDT 100 0.0007956 Open Long -- Funding -0.00008824 -- 1b46e148-a28d-4.... 09/30/2026 09:30:00 AM":
+          - cell "B3USDT"
+          - cell "100"
+          - cell "0.0007956"
+          - cell "Open Long"
+          - cell "--"
+          - cell "Funding"
+          - cell "-0.00008824"
+          - cell "--"
+          - cell "1b46e148-a28d-4....":
+            - text: 1b46e148-a28d-4....
+            - button:
+          - cell "09/30/2026 09:30:00 AM"
+        - row "B3USDT 100 0.0008137 Open Long -- Funding -0.00003131 -- 5b9ac472-6b2a-4.... 09/30/2026 05:30:00 AM":
+          - cell "B3USDT"
+          - cell "100"
+          - cell "0.0008137"
+          - cell "Open Long"
+          - cell "--"
+          - cell "Funding"
+          - cell "-0.00003131"
+          - cell "--"
+          - cell "5b9ac472-6b2a-4....":
+            - text: 5b9ac472-6b2a-4....
+            - button:
+          - cell "09/30/2026 05:30:00 AM"
+        - row "B3USDT 100 0.0007918 Open Long -- Funding 0.00000396 -- a13c8ad1-8cb5-4.... 09/30/2026 01:30:00 AM":
+          - cell "B3USDT"
+          - cell "100"
+          - cell "0.0007918"
+          - cell "Open Long"
+          - cell "--"
+          - cell "Funding"
+          - cell "0.00000396"
+          - cell "--"
+          - cell "a13c8ad1-8cb5-4....":
+            - text: a13c8ad1-8cb5-4....
+            - button:
+          - cell "09/30/2026 01:30:00 AM"
+        - row "B3USDT 100 0.0007865 Open Long -- Funding 0.00000394 -- 2b6f80fa-8f02-4.... 09/29/2026 09:30:00 PM":
+          - cell "B3USDT"
+          - cell "100"
+          - cell "0.0007865"
+          - cell "Open Long"
+          - cell "--"
+          - cell "Funding"
+          - cell "0.00000394"
+          - cell "--"
+          - cell "2b6f80fa-8f02-4....":
+            - text: 2b6f80fa-8f02-4....
+            - button:
+          - cell "09/29/2026 09:30:00 PM"
+        - row "B3USDT 100 0.0008008 Open Long -- Funding -0.00001807 -- e4f13bc9-8517-4.... 09/29/2026 05:30:00 PM":
+          - cell "B3USDT"
+          - cell "100"
+          - cell "0.0008008"
+          - cell "Open Long"
+          - cell "--"
+          - cell "Funding"
+          - cell "-0.00001807"
+          - cell "--"
+          - cell "e4f13bc9-8517-4....":
+            - text: e4f13bc9-8517-4....
+            - button:
+          - cell "09/29/2026 05:30:00 PM"
+        - row "B3USDT 100 0.0008002 Open Long -- Funding 0 -- 153e8ec5-1c3e-4.... 09/29/2026 01:30:00 PM":
+          - cell "B3USDT"
+          - cell "100"
+          - cell "0.0008002"
+          - cell "Open Long"
+          - cell "--"
+          - cell "Funding"
+          - cell "0"
+          - cell "--"
+          - cell "153e8ec5-1c3e-4....":
+            - text: 153e8ec5-1c3e-4....
+            - button:
+          - cell "09/29/2026 01:30:00 PM"
+        - row "B3USDT 100 0.0008166 Open Long -- Funding 0 -- 140b3e63-b4d9-4.... 09/29/2026 09:30:00 AM":
+          - cell "B3USDT"
+          - cell "100"
+          - cell "0.0008166"
+          - cell "Open Long"
+          - cell "--"
+          - cell "Funding"
+          - cell "0"
+          - cell "--"
+          - cell "140b3e63-b4d9-4....":
+            - text: 140b3e63-b4d9-4....
+            - button:
+          - cell "09/29/2026 09:30:00 AM"
+        - row "B3USDT 100 0.0007873 Open Long -- Funding 0 -- 4ee63094-3cfb-4.... 09/29/2026 05:30:00 AM":
+          - cell "B3USDT"
+          - cell "100"
+          - cell "0.0007873"
+          - cell "Open Long"
+          - cell "--"
+          - cell "Funding"
+          - cell "0"
+          - cell "--"
+          - cell "4ee63094-3cfb-4....":
+            - text: 4ee63094-3cfb-4....
+            - button:
+          - cell "09/29/2026 05:30:00 AM"
+        - row "B3USDT 100 0.0007615 Open Long -- Funding 0 -- 855d8434-a7a6-4.... 09/29/2026 01:30:00 AM":
+          - cell "B3USDT"
+          - cell "100"
+          - cell "0.0007615"
+          - cell "Open Long"
+          - cell "--"
+          - cell "Funding"
+          - cell "0"
+          - cell "--"
+          - cell "855d8434-a7a6-4....":
+            - text: 855d8434-a7a6-4....
+            - button:
+          - cell "09/29/2026 01:30:00 AM"
+        - row "B3USDT 100 0.0007632 Open Long -- Funding 0.00000382 -- 2c4fb703-5a27-4.... 09/28/2026 09:30:00 PM":
+          - cell "B3USDT"
+          - cell "100"
+          - cell "0.0007632"
+          - cell "Open Long"
+          - cell "--"
+          - cell "Funding"
+          - cell "0.00000382"
+          - cell "--"
+          - cell "2c4fb703-5a27-4....":
+            - text: 2c4fb703-5a27-4....
+            - button:
+          - cell "09/28/2026 09:30:00 PM"
+    - navigation "Pagination":
+      - button "Previous page" [disabled]:
+      - button "Page 1 is your current page": "1"
+      - button "Page 2": "2"
+      - button "Page 3": "3"
+      - button "Page 4": "4"
+      - button "Page 5": "5"
+      - button "Page 6": "6"
+      - button "Page 7": "7"
+      - button "Page 8": "8"
+      - button "Page 9": "9"
+      - button "Next page":
+- heading "Unified Trading Amount" [level=4]
+- generic: Initial Margin
+- progressbar
+- generic: 0%
+- generic: Maintenance Margin
+- progressbar
+- generic: 0%
+- paragraph: © 2026 DY ENC Graviti. All rights reserved.
+- paragraph:
+  - link "Contact Support":
+    - /url: /auth/contact-us
+- alert: Graviti

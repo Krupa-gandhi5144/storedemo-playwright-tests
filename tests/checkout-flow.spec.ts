@@ -451,7 +451,7 @@ test.describe('Checkout Flow', { tag: '@CheckoutFlow' }, () => {
   });
 
   // ⏭️ SKIP (2)
-  test.skip('Guest checkout without account', { tag: '@GuestCheckoutWithoutAccount' }, async ({ page }) => {
+  test.only('Guest checkout without account', { tag: '@GuestCheckoutWithoutAccount' }, async ({ page }) => {
     await page.goto('/checkout');
   });
 

@@ -327,7 +327,7 @@ test.describe('API Users', { tag: '@ApiUsers' }, () => {
   });
 
   // 🔄 FLAKY (3)
-  test('Flaky - User search API response', { tag: '@FlakyUserSearchApiResponse' }, async ({ request }) => {
+  test.only('Flaky - User search API response', { tag: '@FlakyUserSearchApiResponse' }, async ({ request }) => {
     if (test.info().retry === 0) { expect(true).toBe(false); }
     const response = await request.get(`${API_BASE}/users/search?q=john`);
     expect(response.status()).toBe(200);

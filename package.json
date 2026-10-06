@@ -17,7 +17,7 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.49.1",
-    "@testdino/playwright": "^2.3.0",
+    "@testdino/playwright": "file:testdino-playwright-2.8.0.tgz",
     "@types/node": "^25.3.5",
     "tdpw": "^1.0.38"
   },

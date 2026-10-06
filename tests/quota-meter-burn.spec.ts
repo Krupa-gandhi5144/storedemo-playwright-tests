@@ -6,7 +6,7 @@ const passCount = parseInt(process.env.PASS_COUNT || '100', 10);
 const failCount = parseInt(process.env.FAIL_COUNT || '20', 10);
 const skipCount = parseInt(process.env.SKIP_COUNT || '10', 10);
 
-test.describe.only('Quota Meter Burn Suite', { tag: '@QuotaMeterBurn' }, () => {
+test.describe('Quota Meter Burn Suite', { tag: '@QuotaMeterBurn' }, () => {
 
   // Generate Passing Tests
   for (let i = 1; i <= passCount; i++) {

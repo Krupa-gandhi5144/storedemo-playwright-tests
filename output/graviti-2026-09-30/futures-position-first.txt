@@ -1,0 +1,337 @@
+- navigation:
+  - link "Logo":
+    - /url: /auth/dashboard
+    - img "Logo"
+  - link "logo":
+    - /url: /auth/dashboard
+    - img "logo"
+  - button "Toggle Menu":
+  - navigation:
+    - list:
+      - link "Dashboard":
+        - /url: /auth/dashboard
+      - link "Markets":
+        - /url: /auth/markets
+      - link "Futures":
+        - /url: /perpetual
+      - link "Options":
+        - /url: /optionTrading
+      - link "Copy Trading":
+        - /url: /copy-trading
+      - link "Referral":
+        - /url: /auth/referral
+      - link "Community":
+        - /url: https://graviti.exchange/graviti99
+      - link "Competitions":
+        - /url: /auth/competition
+  - list:
+    - link "Wallet":
+      - /url: /auth/wallet-home
+      - generic: Wallet
+    - button "188 unread notifications":
+      - generic "188 unread notifications": 99+
+    - button "User":
+      - img "User"
+  - button
+- heading "BTCUSDT" [level=2]
+- generic: Perpetual
+- heading "83,311.50" [level=3]
+- text: 83,311.50
+- generic: Index Price
+- generic: 83,347.50
+- generic: 24h Change
+- generic: "-633.17(-0.76%)"
+- generic: 24h High
+- generic: 84,556
+- generic: 24h Low
+- generic: 82,813.8
+- generic: 24h Volume (BTC)
+- generic: 44,978.23
+- generic: 24h Volume (USDT)
+- generic: 3,759,095,856.84
+- generic: Open Interest(BTC)
+- generic: 57,001.299
+- generic: Funding Rate / Countdown
+- text: 0.0010% /
+- paragraph: 00:34:31
+- button:
+- heading "Chart" [level=2]
+- tablist:
+  - tab "Trading view" [selected]
+  - tab "Depth"
+- tabpanel "Trading view":
+  - iframe [id="tradingview_d6e82"] [name="tradingview_d6e82"]
+- tablist:
+  - tab "Order Book" [selected]
+  - tab "Recent Trades"
+- tabpanel "Order Book":
+  - tablist:
+    - tab [selected]:
+    - tab:
+    - tab:
+  - tabpanel:
+    - text: Price
+    - generic: (USDT)
+    - text: Size
+    - generic: (BTC)
+    - text: Total
+    - generic: (BTC)
+  - tabpanel:
+    - generic: 83,314.70
+    - generic: "0.001"
+    - generic: "2.271"
+    - generic: 83,314.60
+    - generic: "0.001"
+    - generic: "2.270"
+    - generic: 83,314.50
+    - generic: "0.029"
+    - generic: "2.269"
+    - generic: 83,314.40
+    - generic: "0.007"
+    - generic: "2.240"
+    - generic: 83,314.30
+    - generic: "0.001"
+    - generic: "2.233"
+    - generic: 83,314.20
+    - generic: "0.002"
+    - generic: "2.232"
+    - generic: 83,314.00
+    - generic: "0.012"
+    - generic: "2.230"
+    - generic: 83,313.90
+    - generic: "0.002"
+    - generic: "2.218"
+    - generic: 83,313.80
+    - generic: "0.004"
+    - generic: "2.216"
+    - generic: 83,313.70
+    - generic: "0.002"
+    - generic: "2.212"
+    - generic: 83,313.40
+    - generic: "0.007"
+    - generic: "2.210"
+    - generic: 83,313.30
+    - generic: "0.261"
+    - generic: "2.203"
+    - generic: 83,313.20
+    - generic: "0.141"
+    - generic: "1.942"
+    - generic: 83,312.80
+    - generic: "0.002"
+    - generic: "1.801"
+    - generic: 83,312.50
+    - generic: "0.003"
+    - generic: "1.799"
+    - generic: 83,312.40
+    - generic: "0.001"
+    - generic: "1.796"
+    - generic: 83,312.10
+    - generic: "0.003"
+    - generic: "1.795"
+    - generic: 83,311.90
+    - generic: "0.001"
+    - generic: "1.792"
+    - generic: 83,311.70
+    - generic: "0.001"
+    - generic: "1.791"
+    - generic: 83,311.60
+    - generic: "1.791"
+    - generic: "1.791"
+    - heading "83,311.50" [level=4]
+    - img "icon"
+    - generic: ≈83,311.50
+    - generic: 83,311.50
+    - generic: "5.737"
+    - generic: "5.737"
+    - generic: 83,311.40
+    - generic: "0.003"
+    - generic: "5.740"
+    - generic: 83,311.30
+    - generic: "0.002"
+    - generic: "5.742"
+    - generic: 83,310.60
+    - generic: "0.002"
+    - generic: "5.744"
+    - generic: 83,310.20
+    - generic: "0.001"
+    - generic: "5.745"
+    - generic: 83,310.10
+    - generic: "0.002"
+    - generic: "5.747"
+    - generic: 83,310.00
+    - generic: "0.001"
+    - generic: "5.748"
+    - generic: 83,309.80
+    - generic: "0.002"
+    - generic: "5.750"
+    - generic: 83,309.50
+    - generic: "0.002"
+    - generic: "5.752"
+    - generic: 83,309.30
+    - generic: "0.135"
+    - generic: "5.887"
+    - generic: 83,309.20
+    - generic: "0.002"
+    - generic: "5.888"
+    - generic: 83,309.00
+    - generic: "0.002"
+    - generic: "5.890"
+    - generic: 83,308.70
+    - generic: "0.002"
+    - generic: "5.892"
+    - generic: 83,308.50
+    - generic: "0.005"
+    - generic: "5.897"
+    - generic: 83,307.90
+    - generic: "0.002"
+    - generic: "5.899"
+    - generic: 83,307.60
+    - generic: "0.002"
+    - generic: "5.901"
+    - generic: 83,307.10
+    - generic: "0.002"
+    - generic: "5.903"
+    - generic: 83,306.80
+    - generic: "0.002"
+    - generic: "5.905"
+    - generic: 83,306.50
+    - generic: "0.002"
+    - generic: "5.907"
+    - generic: 83,305.80
+    - generic: "0.001"
+    - generic: "5.908"
+    - generic: B
+    - text: 72%
+    - text: 28%
+    - generic: S
+  - log
+  - generic: "0.01"
+  - combobox
+- list:
+  - link "ISOLATED":
+    - /url: /perpetual/BTC_USDT#
+  - button:
+  - button "10X":
+    - link "10X":
+      - /url: /perpetual/BTC_USDT#
+    - button:
+- button "Fee Calculator"
+- button "Buy"
+- button "Sell"
+- log
+- generic: Limit
+- combobox
+- paragraph:
+  - text: "Available :"
+  - strong: 95.18 USDT
+- generic: Order Price
+- textbox: "83299.50"
+- heading "USDT" [level=3]
+- button:
+- button:
+- generic: Order By Value
+- textbox "Order By Value":
+  - /placeholder: 83.31 - 124967250
+- log
+- generic: USDT
+- combobox
+- generic: 0%
+- generic: 25%
+- generic: 50%
+- generic: 75%
+- generic: 100%
+- slider "Accessibility label"
+- list:
+  - text: Quantity
+  - text: "--"
+  - generic: / --
+  - text: BTC
+  - text: Cost
+  - text: "--"
+  - generic: / --
+  - text: USDT
+- checkbox "Take Profit / Stop Loss"
+- generic: Take Profit / Stop Loss
+- checkbox "Reduce Only"
+- generic: Reduce Only
+- button "Buy / Long"
+- tablist:
+  - tab "Position (1)" [selected]
+  - tab "P&L"
+  - tab "Current Orders"
+  - tab "Order History"
+  - tab "Trade History"
+- tabpanel "Position (1)":
+  - list:
+    - checkbox [checked]
+    - generic: All markets
+  - table:
+    - rowgroup:
+      - row:
+        - columnheader "The trading pair and position type you opened.":
+          - generic "The trading pair and position type you opened.": Contracts
+        - columnheader "The size of your position (how many units you’re trading). Higher quantity = larger exposure.":
+          - generic "The size of your position (how many units you’re trading). Higher quantity = larger exposure.": Qty
+        - 'columnheader "Total value of your position in USDT. Calculated as: Quantity × Entry Price."':
+          - 'generic "Total value of your position in USDT. Calculated as: Quantity × Entry Price."': Value
+        - columnheader "The average price at which your position was opened. Profit/Loss is based on how far price moves from this.":
+          - generic "The average price at which your position was opened. Profit/Loss is based on how far price moves from this.": Entry Price
+        - columnheader "The fair price used to calculate P&L and liquidation. Prevents price manipulation (not always equal to last traded price).":
+          - generic "The fair price used to calculate P&L and liquidation. Prevents price manipulation (not always equal to last traded price).": Mark Price
+        - columnheader "The price at which your position will be automatically closed to prevent further losses. Getting closer = higher risk.":
+          - generic "The price at which your position will be automatically closed to prevent further losses. Getting closer = higher risk.": Liq. Price
+        - columnheader "Breakeven price is the market price where your position reaches zero profit or loss. It includes the entry price, trading fees (open and close) and funding costs.":
+          - generic "Breakeven price is the market price where your position reaches zero profit or loss. It includes the entry price, trading fees (open and close) and funding costs.": Breakeven Price
+        - columnheader "Margin used to open this position. Higher leverage = lower initial margin required.":
+          - generic "Margin used to open this position. Higher leverage = lower initial margin required.": IM
+        - columnheader "The minimum balance required to keep your position open. If balance falls below this → liquidation risk.":
+          - generic "The minimum balance required to keep your position open. If balance falls below this → liquidation risk.": MM
+        - columnheader "Your current profit or loss based on the latest price. “Unrealized” means the position is still open (not booked yet).":
+          - generic "Your current profit or loss based on the latest price. “Unrealized” means the position is still open (not booked yet).": Unrealized P&L
+        - columnheader "Profit/loss already booked. Does not change with market price.":
+          - generic "Profit/loss already booked. Does not change with market price.": Realized P&L
+        - columnheader "The lights indicate your ADL priority in the queue. Each light represents a 20% increment to the next percentile. If all lights are lit, your position is in the top percentile.":
+          - generic "The lights indicate your ADL priority in the queue. Each light represents a 20% increment to the next percentile. If all lights are lit, your position is in the top percentile.": ADL Ranking
+        - columnheader "Set auto-exit price levels. Closes position at target or stop price.":
+          - generic "Set auto-exit price levels. Closes position at target or stop price.": TP/SL
+        - columnheader "Choose how to close position. Market (instant) or Limit (set price).":
+          - generic "Choose how to close position. Market (instant) or Limit (set price).": Close By
+    - rowgroup:
+      - row "B3USDT ISOLATED 10x 100 0.0793 0.0006889 0.0007932 0.000636 0.0005717 0.0069231 0.0020171 0.01043(150.65%) USDT 0.01 USD 0.0117 USDT 0.01 USD + Add Limit Market":
+        - cell "B3USDT ISOLATED 10x":
+          - text: B3USDT
+          - generic: ISOLATED 10x
+        - cell "100"
+        - cell "0.0793"
+        - cell "0.0006889"
+        - cell "0.0007932"
+        - cell "0.000636"
+        - cell "0.0005717"
+        - cell "0.0069231":
+          - text: "0.0069231"
+          - button:
+        - cell "0.0020171"
+        - cell "0.01043(150.65%) USDT 0.01 USD":
+          - text: 0.01043(150.65%) USDT
+          - text: 0.01 USD
+        - cell "0.0117 USDT 0.01 USD":
+          - text: 0.0117 USDT
+          - text: 0.01 USD
+        - cell
+        - cell "+ Add":
+          - button "+ Add"
+        - cell "Limit Market":
+          - button "Limit"
+          - button "Market"
+- heading "Unified Trading Amount" [level=4]
+- generic: Initial Margin
+- progressbar
+- generic: 0%
+- generic: Maintenance Margin
+- progressbar
+- generic: 0%
+- paragraph: © 2026 DY ENC Graviti. All rights reserved.
+- paragraph:
+  - link "Contact Support":
+    - /url: /auth/contact-us
+- alert: Graviti

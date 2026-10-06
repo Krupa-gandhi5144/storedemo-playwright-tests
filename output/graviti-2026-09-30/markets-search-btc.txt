@@ -1,0 +1,218 @@
+- navigation:
+  - link "Logo":
+    - /url: /auth/dashboard
+    - img "Logo"
+  - link "logo":
+    - /url: /auth/dashboard
+    - img "logo"
+  - button "Toggle Menu":
+  - navigation:
+    - list:
+      - link "Dashboard":
+        - /url: /auth/dashboard
+      - link "Markets":
+        - /url: /auth/markets
+      - link "Futures":
+        - /url: /perpetual
+      - link "Options":
+        - /url: /optionTrading
+      - link "Copy Trading":
+        - /url: /copy-trading
+      - link "Referral":
+        - /url: /auth/referral
+      - link "Community":
+        - /url: https://graviti.exchange/graviti99
+      - link "Competitions":
+        - /url: /auth/competition
+  - list:
+    - link "Wallet":
+      - /url: /auth/wallet-home
+      - generic: Wallet
+    - button "188 unread notifications":
+      - generic "188 unread notifications": 99+
+    - button "User":
+      - img "User"
+  - button
+- heading "Markets" [level=4]
+- generic: Trending Markets
+- link:
+  - /url: /perpetual/BTC_USDT
+- link "BTC BTC $83,325 -0.67%":
+  - /url: /perpetual/BTC_USDT
+  - img "BTC"
+  - generic: BTC
+  - generic: $83,325
+  - generic: "-0.67%"
+- link "ETH ETH $2,671.16 -1.43%":
+  - /url: /perpetual/ETH_USDT
+  - img "ETH"
+  - generic: ETH
+  - generic: $2,671.16
+  - generic: "-1.43%"
+- link "SOL SOL $118.61 -0.61%":
+  - /url: /perpetual/SOL_USDT
+  - img "SOL"
+  - generic: SOL
+  - generic: $118.61
+  - generic: "-0.61%"
+- link "XRP XRP $1.5008 -0.31%":
+  - /url: /perpetual/XRP_USDT
+  - img "XRP"
+  - generic: XRP
+  - generic: $1.5008
+  - generic: "-0.31%"
+- link "ZEC ZEC $1,398.11 -1.64%":
+  - /url: /perpetual/ZEC_USDT
+  - img "ZEC"
+  - generic: ZEC
+  - generic: $1,398.11
+  - generic: "-1.64%"
+- generic: New Listings
+- link:
+  - /url: /perpetual/XDP_USDT
+- link "XDP XDP $0.02368 -0.54%":
+  - /url: /perpetual/XDP_USDT
+  - generic: XDP
+  - generic: XDP
+  - generic: $0.02368
+  - generic: "-0.54%"
+- link "RUM RUM $7.86 -3.20%":
+  - /url: /perpetual/RUM_USDT
+  - generic: RUM
+  - generic: RUM
+  - generic: $7.86
+  - generic: "-3.20%"
+- link "CVN CVNA $63.98 3.79%":
+  - /url: /perpetual/CVNA_USDT
+  - generic: CVN
+  - generic: CVNA
+  - generic: $63.98
+  - generic: 3.79%
+- link "TWS TWST $191.26 10.20%":
+  - /url: /perpetual/TWST_USDT
+  - generic: TWS
+  - generic: TWST
+  - generic: $191.26
+  - generic: 10.20%
+- link "KII KII $0.09273 6.04%":
+  - /url: /perpetual/KII_USDT
+  - generic: KII
+  - generic: KII
+  - generic: $0.09273
+  - generic: 6.04%
+- generic: Top Gainers
+- link:
+  - /url: /perpetual/MOVR_USDT
+- link "MOVR MOVR $1.706 74.43%":
+  - /url: /perpetual/MOVR_USDT
+  - img "MOVR"
+  - generic: MOVR
+  - generic: $1.706
+  - generic: 74.43%
+- link "SOON SOON $0.4336 41.28%":
+  - /url: /perpetual/SOON_USDT
+  - img "SOON"
+  - generic: SOON
+  - generic: $0.4336
+  - generic: 41.28%
+- link "PHA PHA $0.07985 20.34%":
+  - /url: /perpetual/PHA_USDT
+  - img "PHA"
+  - generic: PHA
+  - generic: $0.07985
+  - generic: 20.34%
+- link "ARK ARK $0.28811 19.28%":
+  - /url: /perpetual/ARK_USDT
+  - img "ARK"
+  - generic: ARK
+  - generic: $0.28811
+  - generic: 19.28%
+- link "BERA BERA $0.2571 18.58%":
+  - /url: /perpetual/BERA_USDT
+  - img "BERA"
+  - generic: BERA
+  - generic: $0.2571
+  - generic: 18.58%
+- generic: Top Volume
+- link:
+  - /url: /perpetual/BTC_USDT
+- link "BTC BTC $83,325 -0.67%":
+  - /url: /perpetual/BTC_USDT
+  - img "BTC"
+  - generic: BTC
+  - generic: $83,325
+  - generic: "-0.67%"
+- link "ETH ETH $2,671.16 -1.43%":
+  - /url: /perpetual/ETH_USDT
+  - img "ETH"
+  - generic: ETH
+  - generic: $2,671.16
+  - generic: "-1.43%"
+- link "SOL SOL $118.61 -0.61%":
+  - /url: /perpetual/SOL_USDT
+  - img "SOL"
+  - generic: SOL
+  - generic: $118.61
+  - generic: "-0.61%"
+- link "XRP XRP $1.5008 -0.31%":
+  - /url: /perpetual/XRP_USDT
+  - img "XRP"
+  - generic: XRP
+  - generic: $1.5008
+  - generic: "-0.31%"
+- link "ZEC ZEC $1,398.11 -1.64%":
+  - /url: /perpetual/ZEC_USDT
+  - img "ZEC"
+  - generic: ZEC
+  - generic: $1,398.11
+  - generic: "-1.64%"
+- tablist:
+  - tab "Favorites"
+  - tab "Future" [selected]
+  - tab "Option"
+- searchbox "Search trading pairs" [active]: BTC
+- tabpanel "Future":
+  - tablist:
+    - tab "USDⓈ-M Futures" [selected]
+  - tabpanel "USDⓈ-M Futures":
+    - table:
+      - rowgroup:
+        - row "Market Last Price 24h Change 24h Volume Market Cap Trade":
+          - columnheader "Market"
+          - columnheader "Last Price"
+          - columnheader "24h Change"
+          - columnheader "24h Volume"
+          - columnheader "Market Cap"
+          - columnheader "Trade"
+      - rowgroup:
+        - row "ETHBTC/USDT $0.032100 ETHBTCUSDT -0.58% $521.02K $517.18K Trade":
+          - cell "ETHBTC/USDT":
+            - link "ETHBTC/USDT"
+          - cell "$0.032100 ETHBTCUSDT":
+            - text: $0.032100
+            - paragraph: ETHBTCUSDT
+          - cell "-0.58%":
+            - paragraph: "-0.58%"
+          - cell "$521.02K"
+          - cell "$517.18K"
+          - cell "Trade":
+            - button "Trade"
+        - row "BTC/USDT $83,325 BTCUSDT -0.67% $3.75B $3.74B Trade":
+          - cell "BTC/USDT":
+            - link "BTC/USDT"
+          - cell "$83,325 BTCUSDT":
+            - text: $83,325
+            - paragraph: BTCUSDT
+          - cell "-0.67%":
+            - paragraph: "-0.67%"
+          - cell "$3.75B"
+          - cell "$3.74B"
+          - cell "Trade":
+            - button "Trade"
+- paragraph: © 2026 DY ENC Graviti. All rights reserved.
+- paragraph:
+  - link "Contact Support":
+    - /url: /auth/contact-us
+- button "Helpdesk"
+- button "Raise a Ticket"
+- alert: Graviti

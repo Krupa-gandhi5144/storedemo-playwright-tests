@@ -1,0 +1,306 @@
+- navigation:
+  - link "Logo":
+    - /url: /auth/dashboard
+    - img "Logo"
+  - link "logo":
+    - /url: /auth/dashboard
+    - img "logo"
+  - button "Toggle Menu":
+  - navigation:
+    - list:
+      - link "Dashboard":
+        - /url: /auth/dashboard
+      - link "Markets":
+        - /url: /auth/markets
+      - link "Futures":
+        - /url: /perpetual
+      - link "Options":
+        - /url: /optionTrading
+      - link "Copy Trading":
+        - /url: /copy-trading
+      - link "Referral":
+        - /url: /auth/referral
+      - link "Community":
+        - /url: https://graviti.exchange/graviti99
+      - link "Competitions":
+        - /url: /auth/competition
+  - list:
+    - link "Wallet":
+      - /url: /auth/wallet-home
+      - generic: Wallet
+    - button "188 unread notifications":
+      - generic "188 unread notifications": 99+
+    - button "User":
+      - img "User"
+  - button
+- heading "BTCUSDT" [level=2]
+- generic: Perpetual
+- heading "83,339.60" [level=3]
+- text: 83,352.90
+- generic: Index Price
+- generic: 83,384.69
+- generic: 24h Change
+- generic: "-591.72(-0.71%)"
+- generic: 24h High
+- generic: 84,556
+- generic: 24h Low
+- generic: 82,813.8
+- generic: 24h Volume (BTC)
+- generic: 45,115.07
+- generic: 24h Volume (USDT)
+- generic: 3,770,499,012.67
+- generic: Open Interest(BTC)
+- generic: 56,957.096
+- generic: Funding Rate / Countdown
+- text: 0.0010% /
+- paragraph: 00:33:49
+- button:
+- heading "Chart" [level=2]
+- tablist:
+  - tab "Trading view" [selected]
+  - tab "Depth"
+- tabpanel "Trading view":
+  - iframe [id="tradingview_3ca9a"] [name="tradingview_3ca9a"]
+- tablist:
+  - tab "Order Book" [selected]
+  - tab "Recent Trades"
+- tabpanel "Order Book":
+  - tablist:
+    - tab [selected]:
+    - tab:
+    - tab:
+  - tabpanel:
+    - text: Price
+    - generic: (USDT)
+    - text: Size
+    - generic: (BTC)
+    - text: Total
+    - generic: (BTC)
+  - tabpanel:
+    - generic: 83,346.30
+    - generic: "0.002"
+    - generic: "6.612"
+    - generic: 83,346.20
+    - generic: "0.759"
+    - generic: "6.610"
+    - generic: 83,346.10
+    - generic: "0.003"
+    - generic: "5.851"
+    - generic: 83,345.60
+    - generic: "0.002"
+    - generic: "5.848"
+    - generic: 83,345.20
+    - generic: "0.001"
+    - generic: "5.846"
+    - generic: 83,344.80
+    - generic: "0.002"
+    - generic: "5.845"
+    - generic: 83,344.60
+    - generic: "0.002"
+    - generic: "5.843"
+    - generic: 83,344.50
+    - generic: "2.688"
+    - generic: "5.841"
+    - generic: 83,344.40
+    - generic: "0.791"
+    - generic: "3.153"
+    - generic: 83,344.30
+    - generic: "0.003"
+    - generic: "2.362"
+    - generic: 83,344.00
+    - generic: "0.003"
+    - generic: "2.359"
+    - generic: 83,343.80
+    - generic: "0.110"
+    - generic: "2.356"
+    - generic: 83,343.20
+    - generic: "0.002"
+    - generic: "2.246"
+    - generic: 83,342.60
+    - generic: "0.001"
+    - generic: "2.244"
+    - generic: 83,342.40
+    - generic: "0.002"
+    - generic: "2.243"
+    - generic: 83,341.60
+    - generic: "0.002"
+    - generic: "2.241"
+    - generic: 83,340.90
+    - generic: "0.001"
+    - generic: "2.239"
+    - generic: 83,340.70
+    - generic: "0.002"
+    - generic: "2.238"
+    - generic: 83,339.70
+    - generic: "0.002"
+    - generic: "2.236"
+    - generic: 83,339.60
+    - generic: "2.235"
+    - generic: "2.235"
+    - heading "83,339.60" [level=4]
+    - img "icon"
+    - generic: ≈83,352.90
+    - generic: 83,339.50
+    - generic: "4.741"
+    - generic: "4.741"
+    - generic: 83,339.40
+    - generic: "0.002"
+    - generic: "4.742"
+    - generic: 83,339.30
+    - generic: "0.602"
+    - generic: "5.345"
+    - generic: 83,339.10
+    - generic: "0.602"
+    - generic: "5.947"
+    - generic: 83,338.90
+    - generic: "0.602"
+    - generic: "6.549"
+    - generic: 83,338.40
+    - generic: "0.004"
+    - generic: "6.553"
+    - generic: 83,338.00
+    - generic: "0.002"
+    - generic: "6.555"
+    - generic: 83,337.60
+    - generic: "0.002"
+    - generic: "6.556"
+    - generic: 83,337.50
+    - generic: "0.001"
+    - generic: "6.558"
+    - generic: 83,337.40
+    - generic: "0.002"
+    - generic: "6.560"
+    - generic: 83,336.80
+    - generic: "0.004"
+    - generic: "6.563"
+    - generic: 83,336.40
+    - generic: "0.003"
+    - generic: "6.566"
+    - generic: 83,335.90
+    - generic: "0.003"
+    - generic: "6.569"
+    - generic: 83,335.70
+    - generic: "0.001"
+    - generic: "6.571"
+    - generic: 83,335.20
+    - generic: "0.001"
+    - generic: "6.572"
+    - generic: 83,335.00
+    - generic: "0.003"
+    - generic: "6.575"
+    - generic: 83,334.80
+    - generic: "0.002"
+    - generic: "6.577"
+    - generic: 83,334.50
+    - generic: "0.002"
+    - generic: "6.579"
+    - generic: 83,334.00
+    - generic: "0.003"
+    - generic: "6.582"
+    - generic: 83,333.60
+    - generic: "0.001"
+    - generic: "6.583"
+    - generic: B
+    - text: 50%
+    - text: 50%
+    - generic: S
+  - log
+  - generic: "0.01"
+  - combobox
+- list:
+  - link "ISOLATED":
+    - /url: /perpetual/BTC_USDT#
+  - button:
+  - button "10X":
+    - link "10X":
+      - /url: /perpetual/BTC_USDT#
+    - button:
+- button "Fee Calculator"
+- button "Buy"
+- button "Sell"
+- log
+- generic: Limit
+- combobox
+- paragraph:
+  - text: "Available :"
+  - strong: 95.18 USDT
+- generic: Order Price
+- textbox: "83311.5"
+- heading "USDT" [level=3]
+- button:
+- button:
+- generic: Order By Value
+- textbox "Order By Value":
+  - /placeholder: 83.33 - 125009400.00
+  - text: "0"
+- log
+- generic: USDT
+- combobox
+- generic: 0%
+- generic: 25%
+- generic: 50%
+- generic: 75%
+- generic: 100%
+- slider "Accessibility label"
+- list:
+  - text: Quantity
+  - text: "--"
+  - generic: / --
+  - text: BTC
+  - text: Cost
+  - text: "--"
+  - generic: / --
+  - text: USDT
+- checkbox "Take Profit / Stop Loss"
+- generic: Take Profit / Stop Loss
+- checkbox "Reduce Only"
+- generic: Reduce Only
+- button "Buy / Long"
+- tablist:
+  - tab "Position (1)"
+  - tab "P&L"
+  - tab "Current Orders"
+  - tab "Order History" [active] [selected]
+  - tab "Trade History"
+- tabpanel "Order History":
+  - list:
+    - checkbox
+    - generic: All markets
+    - link "All Orders":
+      - /url: /auth/exchange-history
+  - tablist:
+    - tab "Limit & Market" [selected]
+    - tab "TP/SL"
+    - tab "Conditional"
+  - list:
+    - button "Last 7D"
+    - button "Last 30D"
+    - button "Last 90D"
+  - tabpanel "Limit & Market":
+    - table:
+      - rowgroup:
+        - row "Contracts Filled/Total Filled Price/Order Price Trade type Order Type Fee Paid Goods and Services Tax (GST) calculated at 18% of the fee paid. Status Order No. Order Time":
+          - columnheader "Contracts"
+          - columnheader "Filled/Total"
+          - columnheader "Filled Price/Order Price"
+          - columnheader "Trade type"
+          - columnheader "Order Type"
+          - columnheader "Fee Paid"
+          - columnheader "Goods and Services Tax (GST) calculated at 18% of the fee paid.":
+            - generic "Goods and Services Tax (GST) calculated at 18% of the fee paid.": GST
+          - columnheader "Status"
+          - columnheader "Order No."
+          - columnheader "Order Time"
+      - rowgroup
+- heading "Unified Trading Amount" [level=4]
+- generic: Initial Margin
+- progressbar
+- generic: 0%
+- generic: Maintenance Margin
+- progressbar
+- generic: 0%
+- paragraph: © 2026 DY ENC Graviti. All rights reserved.
+- paragraph:
+  - link "Contact Support":
+    - /url: /auth/contact-us
+- alert: Graviti

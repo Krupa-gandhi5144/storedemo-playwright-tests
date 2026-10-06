@@ -1,0 +1,140 @@
+- navigation:
+  - link "Logo":
+    - /url: /auth/dashboard
+    - img "Logo"
+  - link "logo":
+    - /url: /auth/dashboard
+    - img "logo"
+  - button "Toggle Menu":
+  - navigation:
+    - list:
+      - link "Dashboard":
+        - /url: /auth/dashboard
+      - link "Markets":
+        - /url: /auth/markets
+      - link "Futures":
+        - /url: /perpetual
+      - link "Options":
+        - /url: /optionTrading
+      - link "Copy Trading":
+        - /url: /copy-trading
+      - link "Referral":
+        - /url: /auth/referral
+      - link "Community":
+        - /url: https://graviti.exchange/graviti99
+      - link "Competitions":
+        - /url: /auth/competition
+  - list:
+    - link "Wallet":
+      - /url: /auth/wallet-home
+      - generic: Wallet
+    - button "188 unread notifications":
+      - generic "188 unread notifications": 99+
+    - button "User":
+      - img "User"
+  - button
+- navigation "breadcrumb":
+  - list:
+    - link "Copy Trading":
+      - /url: /copy-trading
+    - listitem: Trader Profile
+- heading "Trade Details" [level=4]
+- img "profile-img"
+- heading "Anish Kumar" [level=6]
+- button:
+- generic: Days Trading
+- generic: "1"
+- generic: Profit Share (%)
+- generic: "1"
+- generic: AUM
+- generic: $0
+- generic: Followers
+- generic: "0"
+- generic: Daily Trades
+- generic: "6"
+- generic: 7-Day Trades
+- generic: "-0.007184"
+- generic: Total Assets
+- text: "****** (USDT)"
+- heading "Profile Description" [level=6]
+- paragraph: asdasdasdasdasdasdasdas
+- heading "Trading History" [level=5]
+- log
+- generic: 30 Days
+- combobox
+- table:
+  - rowgroup:
+    - row "Trading Pair % of the Total Trades Total Trades P&L":
+      - columnheader "Trading Pair"
+      - columnheader "% of the Total Trades"
+      - columnheader "Total Trades"
+      - columnheader "P&L"
+  - rowgroup:
+    - row "1000BONKUSDT 33.33 2 -0.0037":
+      - cell "1000BONKUSDT"
+      - cell "33.33"
+      - cell "2"
+      - cell "-0.0037"
+    - row "PENGUUSDT 66.67 4 -0.0158":
+      - cell "PENGUUSDT"
+      - cell "66.67"
+      - cell "4"
+      - cell "-0.0158"
+- heading "Performance" [level=5]
+- log
+- generic: 30 Days
+- combobox
+- paragraph: Total P&L
+- paragraph: $-0.007184
+- paragraph: Total ROI
+- paragraph: "-1.366083 %"
+- paragraph: Followers
+- paragraph: "0"
+- list:
+  - generic: Total Win Rate
+  - generic: 33.33 %
+  - generic: Total Trades
+  - generic: "6"
+  - generic: Winning Trades
+  - generic: "2"
+  - generic: Losing Trades
+  - generic: "4"
+  - generic: P&L Ratio
+  - generic: "2 : 4"
+  - generic: Average Holding Time
+  - generic: 0 sec
+  - generic: Trading Frequency
+  - generic: 1.4 times / week
+  - generic: Last Trade Time
+  - generic: 2026-09-28 22:43:03
+- paragraph: "Pricing Unit: USDT"
+- paragraph: "Data Time Zone: UTC+8 · Updated every 10 minutes"
+- heading "Follower Profit" [level=5]
+- link "View All":
+  - /url: /copy-trading/master-detail/5ef4077a-994d-4ebc-961e-aa9d79bc3f25#
+- table:
+  - rowgroup:
+    - row "Name Cumulative Profit Total ROI":
+      - columnheader "Name"
+      - columnheader "Cumulative Profit"
+      - columnheader "Total ROI"
+  - rowgroup:
+    - row "No Data found":
+      - cell "No Data found"
+- list:
+  - listitem: Statistics
+  - listitem: Trades
+  - listitem: Followers
+- heading "Earnings" [level=4]
+- log
+- generic: Last 7 Days
+- combobox
+- generic: Cumulative ROI
+- generic: Cumulative Profit (USDT)
+- heading "Follower Profit" [level=4]
+- log
+- generic: Last 7 Days
+- combobox
+- button "Helpdesk"
+- button "Raise a Ticket"
+- alert: Graviti

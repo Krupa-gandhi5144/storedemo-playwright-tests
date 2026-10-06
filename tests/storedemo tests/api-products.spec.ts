@@ -5,7 +5,7 @@ const API_BASE = 'https://dummyjson.com';
 test.describe('API Products', { tag: '@ApiProducts' }, () => {
 
   // ✅ PASS (25)
-  test('GET /products full response structure validation', { tag: '@GetProductsFullResponseStructureValidation' }, async ({ request }) => {
+  test.only('GET /products full response structure validation', { tag: '@GetProductsFullResponseStructureValidation' }, async ({ request }) => {
     const response = await request.get(`${API_BASE}/products`);
     expect(response.status()).toBe(200);
     const body = await response.json();

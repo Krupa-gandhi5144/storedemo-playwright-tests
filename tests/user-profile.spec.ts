@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 test.describe('User Profile', { tag: '@UserProfile' }, () => {
 
 
-  test('Profile page full load and content verification', { tag: '@ProfilePageFullLoadAndContentVerification' }, async ({ page }) => {
+  test.only('Profile page full load and content verification', { tag: '@ProfilePageFullLoadAndContentVerification' }, async ({ page }) => {
     await page.goto('/');
     await expect(page).toHaveURL(/storedemo/);
     const title = await page.title();
@@ -41,7 +41,7 @@ test.describe('User Profile', { tag: '@UserProfile' }, () => {
     await expect(header).toBeVisible();
   });
 
-  test('Profile page multi-page navigation flow', { tag: '@ProfilePageMultipageNavigationFlow' }, async ({ page }) => {
+  test.only('Profile page multi-page navigation flow', { tag: '@ProfilePageMultipageNavigationFlow' }, async ({ page }) => {
     await page.goto('/');
     await expect(page).toHaveURL(/storedemo/);
     await page.waitForTimeout(2000);

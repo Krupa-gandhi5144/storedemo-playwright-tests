@@ -24,7 +24,7 @@ import { expect, test } from '@playwright/test';
  */
 
 /** Per Playwright process — keep under reporter buffer / Kafka produce limits. */
-const MAX_BURN_PER_RUN = 250;
+const MAX_BURN_PER_RUN = 1000;
 
 /**
  * @param {string | undefined} raw

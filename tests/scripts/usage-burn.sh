@@ -30,7 +30,7 @@ if ! [[ "$TOTAL" =~ ^[1-9][0-9]*$ ]]; then
 fi
 
 # Hard ceiling matches free-tier executions seed; raise only if you know why.
-MAX_TOTAL=5000
+MAX_TOTAL=50000
 if [ "$TOTAL" -gt "$MAX_TOTAL" ]; then
   echo "QUOTA_BURN_COUNT capped at $MAX_TOTAL (requested $TOTAL)" >&2
   TOTAL=$MAX_TOTAL
@@ -39,8 +39,8 @@ fi
 # Per-run cap must stay under reporter buffer pressure (~500 events / ~1MB).
 # 200 leaves headroom for run:begin/end + annotations.
 CHUNK="${QUOTA_BURN_CHUNK:-200}"
-if ! [[ "$CHUNK" =~ ^[1-9][0-9]*$ ]] || [ "$CHUNK" -gt 250 ]; then
-  echo "QUOTA_BURN_CHUNK must be 1–250 (got: $CHUNK)" >&2
+if ! [[ "$CHUNK" =~ ^[1-9][0-9]*$ ]] || [ "$CHUNK" -gt 1000 ]; then
+  echo "QUOTA_BURN_CHUNK must be 1–1000 (got: $CHUNK)" >&2
   exit 1
 fi
 

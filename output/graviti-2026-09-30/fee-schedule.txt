@@ -1,0 +1,123 @@
+- navigation:
+  - link "Logo":
+    - /url: /auth/dashboard
+    - img "Logo"
+  - link "logo":
+    - /url: /auth/dashboard
+    - img "logo"
+  - button "Toggle Menu":
+  - navigation:
+    - list:
+      - link "Dashboard":
+        - /url: /auth/dashboard
+      - link "Markets":
+        - /url: /auth/markets
+      - link "Futures":
+        - /url: /perpetual
+      - link "Options":
+        - /url: /optionTrading
+      - link "Copy Trading":
+        - /url: /copy-trading
+      - link "Referral":
+        - /url: /auth/referral
+      - link "Community":
+        - /url: https://graviti.exchange/graviti99
+      - link "Competitions":
+        - /url: /auth/competition
+  - list:
+    - link "Wallet":
+      - /url: /auth/wallet-home
+      - generic: Wallet
+    - button "188 unread notifications":
+      - generic "188 unread notifications": 99+
+    - button "User":
+      - img "User"
+  - button
+- navigation "breadcrumb":
+  - list:
+    - link "Home":
+      - /url: /auth/dashboard
+    - listitem: Fees
+- heading "Graviti Fee Guide" [level=1]
+- paragraph: Everything you need to know about your trade costs so that you know exactly what you pay
+- list:
+  - listitem: Deposit and Withdrawal Fee
+  - listitem: Trading Fee
+  - listitem: Copy Trading Fee
+- heading "Deposit and Withdrawal Fee" [level=2]
+- paragraph: No hidden fees or last-minute charges on your deposits or withdrawals. Here’s what you pay
+- paragraph: INR Deposit Fee
+- generic: 0%
+- generic: INR
+- paragraph: INR Withdrawal Fee
+- generic: 0%
+- generic: INR
+- heading "Plan Your Trade Before You Place An Order" [level=2]
+- paragraph: Get a clear breakdown of all fees up front before placing your order. Our Fee Calculator helps you estimate your returns after deducting maker, taker, and liquidation fees, whichever applies to your trade.
+- list:
+  - text: Real-Time Fee Estimates
+  - text: Transparent Cost Breakdown
+  - text: Net Return Calculated On All Trades
+- tablist:
+  - tab "Futures" [selected]
+  - tab "Options"
+- tabpanel "Futures"
+- generic: Contract
+- log
+- generic: Select contract
+- combobox
+- generic: Entry Price
+- textbox "10000" [disabled]
+- paragraph: Maker
+- checkbox
+- paragraph: Taker
+- generic: Exit Price
+- textbox "15000" [disabled]
+- paragraph: Maker
+- checkbox
+- paragraph: Taker
+- text: Qty (XAPLX)
+- generic: (step 0.01 XAPLX)
+- textbox "0.01" [disabled]
+- generic: Notional Value
+- strong: $0.0000
+- button "GST Fees"
+- generic: $0.0000
+- button "Total Fees (inc. 18% GST)"
+- generic: $0.0000
+- generic: Net P&L
+- strong: $0.0000
+- heading "Frequently Asked Questions" [level=2]
+- paragraph: We've put together answers to the most common questions about our platform, products, and features
+- heading "Still Have Questions?" [level=3]
+- paragraph: Can't find what you're looking for? Our support team is ready to help. Reach out and we'll get back to you quickly
+- button "Contact Us":
+  - text: Contact Us
+- heading "− What is Graviti?" [level=2]:
+  - button "− What is Graviti?" [expanded]
+- generic: Graviti is a crypto futures and options exchange built for Indian traders. It offers 500+ crypto contracts and tokenized markets. Graviti is built for Indian traders who can trade global crypto and tokenized markets all from one platform with INR deposits and withdrawals.
+- heading "+ What can I trade on Graviti?" [level=2]:
+  - button "+ What can I trade on Graviti?"
+- heading "+ Is Graviti secure?" [level=2]:
+  - button "+ Is Graviti secure?"
+- heading "+ How will I be taxed if trading on Graviti?" [level=2]:
+  - button "+ How will I be taxed if trading on Graviti?"
+- heading "+ How do I get started with trading on Graviti?" [level=2]:
+  - button "+ How do I get started with trading on Graviti?"
+- heading "+ What other services does Graviti offer?" [level=2]:
+  - button "+ What other services does Graviti offer?"
+- heading "+ What is the minimum amount to get started?" [level=2]:
+  - button "+ What is the minimum amount to get started?"
+- heading "+ What leverage is available on Graviti?" [level=2]:
+  - button "+ What leverage is available on Graviti?"
+- heading "+ What is copy trading and how does it work?" [level=2]:
+  - button "+ What is copy trading and how does it work?"
+- heading "+ Is trading crypto on Graviti legal?" [level=2]:
+  - button "+ Is trading crypto on Graviti legal?"
+- paragraph: © 2026 DY ENC Graviti. All rights reserved.
+- paragraph:
+  - link "Contact Support":
+    - /url: /auth/contact-us
+- button "Helpdesk"
+- button "Raise a Ticket"
+- alert: Graviti

@@ -1,0 +1,199 @@
+- navigation:
+  - link "Logo":
+    - /url: /auth/dashboard
+    - img "Logo"
+  - link "logo":
+    - /url: /auth/dashboard
+    - img "logo"
+  - button "Toggle Menu":
+  - navigation:
+    - list:
+      - link "Dashboard":
+        - /url: /auth/dashboard
+      - link "Markets":
+        - /url: /auth/markets
+      - link "Futures":
+        - /url: /perpetual
+      - link "Options":
+        - /url: /optionTrading
+      - link "Copy Trading":
+        - /url: /copy-trading
+      - link "Referral":
+        - /url: /auth/referral
+      - link "Community":
+        - /url: https://graviti.exchange/graviti99
+      - link "Competitions":
+        - /url: /auth/competition
+  - list:
+    - link "Wallet":
+      - /url: /auth/wallet-home
+      - generic: Wallet
+    - button "188 unread notifications":
+      - generic "188 unread notifications": 99+
+    - button "User":
+      - img "User"
+  - button
+- navigation "breadcrumb":
+  - list:
+    - link "Copy Trading":
+      - /url: /copy-trading
+    - listitem: Trader Profile
+- heading "Trade Details" [level=4]
+- img "profile-img"
+- heading "Gaurav26mastr" [level=6]
+- button:
+- generic: Days Trading
+- generic: "3"
+- generic: Profit Share (%)
+- generic: "22"
+- generic: AUM
+- generic: $12.77767722
+- generic: Followers
+- generic: "4"
+- generic: Daily Trades
+- generic: "22"
+- generic: 7-Day Trades
+- generic: "0.348468"
+- generic: Total Assets
+- text: "****** (USDT)"
+- heading "Profile Description" [level=6]
+- paragraph: 1212121221323refdsgbfghaettw4qefeqf
+- heading "Trading History" [level=5]
+- log
+- generic: 30 Days
+- combobox
+- table:
+  - rowgroup:
+    - row "Trading Pair % of the Total Trades Total Trades P&L":
+      - columnheader "Trading Pair"
+      - columnheader "% of the Total Trades"
+      - columnheader "Total Trades"
+      - columnheader "P&L"
+  - rowgroup:
+    - row "1000BONKUSDT 9.09 2 -0.0109":
+      - cell "1000BONKUSDT"
+      - cell "9.09"
+      - cell "2"
+      - cell "-0.0109"
+    - row "1000PEPEUSDT 4.55 1 0.1239":
+      - cell "1000PEPEUSDT"
+      - cell "4.55"
+      - cell "1"
+      - cell "0.1239"
+    - row "B3USDT 4.55 1 -0.0918":
+      - cell "B3USDT"
+      - cell "4.55"
+      - cell "1"
+      - cell "-0.0918"
+    - row "BEAMUSDT 4.55 1 -0.1392":
+      - cell "BEAMUSDT"
+      - cell "4.55"
+      - cell "1"
+      - cell "-0.1392"
+    - row "BLASTUSDT 4.55 1 -0.4661":
+      - cell "BLASTUSDT"
+      - cell "4.55"
+      - cell "1"
+      - cell "-0.4661"
+    - row "CHRUSDT 13.64 3 -0.1275":
+      - cell "CHRUSDT"
+      - cell "13.64"
+      - cell "3"
+      - cell "-0.1275"
+    - row "DOGEUSDT 4.55 1 0.0523":
+      - cell "DOGEUSDT"
+      - cell "4.55"
+      - cell "1"
+      - cell "0.0523"
+    - row "GALAUSDT 4.55 1 -0.0027":
+      - cell "GALAUSDT"
+      - cell "4.55"
+      - cell "1"
+      - cell "-0.0027"
+    - row "MARSCOINUSDT 4.55 1 0.6841":
+      - cell "MARSCOINUSDT"
+      - cell "4.55"
+      - cell "1"
+      - cell "0.6841"
+    - row "MONUSDT 4.55 1 -0.2453":
+      - cell "MONUSDT"
+      - cell "4.55"
+      - cell "1"
+      - cell "-0.2453"
+- navigation "Pagination":
+  - button "Previous page" [disabled]:
+  - button "Page 1 is your current page": "1"
+  - button "Page 2": "2"
+  - button "Next page":
+- heading "Performance" [level=5]
+- log
+- generic: 30 Days
+- combobox
+- paragraph: Total P&L
+- paragraph: $0.348468
+- paragraph: Total ROI
+- paragraph: 2.137618 %
+- paragraph: Followers
+- paragraph: "4"
+- list:
+  - generic: Total Win Rate
+  - generic: 22.73 %
+  - generic: Total Trades
+  - generic: "22"
+  - generic: Winning Trades
+  - generic: "5"
+  - generic: Losing Trades
+  - generic: "17"
+  - generic: P&L Ratio
+  - generic: "5 : 17"
+  - generic: Average Holding Time
+  - generic: 0.13 sec
+  - generic: Trading Frequency
+  - generic: 5.13 times / week
+  - generic: Last Trade Time
+  - generic: 2026-09-29 15:29:58
+- paragraph: "Pricing Unit: USDT"
+- paragraph: "Data Time Zone: UTC+8 · Updated every 10 minutes"
+- heading "Follower Profit" [level=5]
+- link "View All":
+  - /url: /copy-trading/master-detail/2882694d-13d0-4205-ab32-082915d63903#
+- table:
+  - rowgroup:
+    - row "Name Cumulative Profit Total ROI":
+      - columnheader "Name"
+      - columnheader "Cumulative Profit"
+      - columnheader "Total ROI"
+  - rowgroup:
+    - row "vyshakh 0 --":
+      - cell "vyshakh"
+      - cell "0"
+      - cell "--"
+    - row "bitukakkar -0.0165 -3.24":
+      - cell "bitukakkar"
+      - cell "-0.0165"
+      - cell "-3.24"
+    - row "chandan -0.3612 -3.35":
+      - cell "chandan"
+      - cell "-0.3612"
+      - cell "-3.35"
+    - row "chandan -0.4370 -2.56":
+      - cell "chandan"
+      - cell "-0.4370"
+      - cell "-2.56"
+- list:
+  - listitem: Statistics
+  - listitem: Trades
+  - listitem: Followers
+- heading "Earnings" [level=4]
+- log
+- generic: Last 7 Days
+- combobox
+- generic: Cumulative ROI
+- generic: Cumulative Profit (USDT)
+- heading "Follower Profit" [level=4]
+- log
+- generic: Last 7 Days
+- combobox
+- button "Helpdesk"
+- button "Raise a Ticket"
+- alert: Graviti

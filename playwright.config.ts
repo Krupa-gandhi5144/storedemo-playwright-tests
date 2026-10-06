@@ -39,8 +39,6 @@ export default defineConfig({
   // reporter: [
   //   ['@testdino/playwright', {
   //     serverUrl: 'https://stg-analytics.testdino.com',
-  //     // token: 'td_api_7e43cca7cc0ffd72089a2bcfd90b91c04aa4f243206a027a60d387d2a27b7859',
-  //      token: 'td_api_7e43cca7cc0ffd72089a2bcfd90b91c04aa4f243206a027a60d387d2a27b7859',
   //     // ciRunId,
   //     debug: false,
   //     artifacts: false
@@ -52,13 +50,11 @@ export default defineConfig({
   [
     '@testdino/playwright',
     {
-      serverUrl: 'https://stg-analytics.testdino.com',
-      token: 'td_api_c9390ccc9d856cd6a0fe260b07f813a69f80efe33bd10498c5939fd3b04e7c45',
+      serverUrl: 'https://stg-reporter.testdino.com',
+      token: 'td_api_799e19d51ed439c03fbf8c656d08b1101e2725822c6ef0293709a619b151e3dc',
       // serverUrl: 'https://analytics.testdino.com',
-      // token: 'td_api_bf842ba824c0b2e12e847db221722a53cfe57218d75ccda4b500107c9713fbd8',
-      // token: 'td_api_41adb680ddaf63ab53d633c9bd3be03d621483237de4aeba57a2b5ea9b3a6c5d',
       debug: false,
-      ciRunId: "Adasd",
+      // ciRunId: process.env.TESTDINO_CI_RUN_ID, // Use environment variable if needed
       artifacts: false,
     },
   ],
