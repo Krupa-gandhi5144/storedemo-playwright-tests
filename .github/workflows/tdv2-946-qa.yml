@@ -1,0 +1,46 @@
+name: TDV2-946 reporter CI verification
+on:
+  push:
+    branches: [qa/tdv2-946-ci-check]
+permissions:
+  contents: read
+jobs:
+  verify-shard:
+    name: ${{ matrix.scenario }} shard ${{ matrix.shard }}/2
+    runs-on: ubuntu-latest
+    timeout-minutes: 6
+    strategy:
+      fail-fast: false
+      matrix:
+        scenario: [quarantine-only, mixed-failure]
+        shard: [1, 2]
+    env:
+      TDV2_946_ENABLED: '1'
+      TDV2_946_Q1: fail
+      TDV2_946_Q2: fail
+      TDV2_946_ORDINARY: ${{ matrix.scenario == 'mixed-failure' && 'fail' || 'pass' }}
+      TESTDINO_CI_RUN_ID: tdv2-946-${{ github.run_id }}-${{ github.run_attempt }}-${{ matrix.scenario }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Prepare the verified reporter
+        env:
+          TDV2_946_QA_BUNDLE: ${{ secrets.TDV2_946_QA_BUNDLE }}
+        run: node .github/qa/prepare-946.cjs
+      - name: Install isolated test dependencies
+        run: npm install --prefix .tdv2-946-ci --ignore-scripts --no-audit --no-fund --package-lock=false
+      - name: Run actual Playwright shard
+        working-directory: .tdv2-946-ci
+        shell: bash
+        run: |
+          set -o pipefail
+          npx playwright test --config=playwright.config.ts --shard=${{ matrix.shard }}/2 2>&1 | tee console.log
+      - name: Preserve QA console evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: tdv2-946-${{ matrix.scenario }}-${{ matrix.shard }}
+          path: .tdv2-946-ci/console.log
+          retention-days: 1

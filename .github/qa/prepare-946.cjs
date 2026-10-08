@@ -1,0 +1,17 @@
+const fs = require('node:fs');
+const crypto = require('node:crypto');
+const bundle = JSON.parse(process.env.TDV2_946_QA_BUNDLE);
+const encrypted = fs.readFileSync('.github/qa/tdv2-946-reporter.enc');
+const decrypt = crypto.createDecipheriv('aes-256-gcm', Buffer.from(bundle.packageKey, 'base64'), encrypted.subarray(0, 12));
+decrypt.setAuthTag(encrypted.subarray(12, 28));
+const archive = Buffer.concat([decrypt.update(encrypted.subarray(28)), decrypt.final()]);
+const expected = fs.readFileSync('.github/qa/tdv2-946-reporter-sha256.txt', 'utf8').trim();
+if (crypto.createHash('sha256').update(archive).digest('hex') !== expected) throw Error('Reporter checksum mismatch');
+fs.mkdirSync('.tdv2-946-ci/tests/test-controls', { recursive: true });
+fs.writeFileSync('reporter-946.tgz', archive);
+fs.writeFileSync('.tdv2-946-ci/package.json', JSON.stringify({private:true,dependencies:{'@playwright/test':'1.58.2','@testdino/playwright':'file:../reporter-946.tgz'}}));
+fs.copyFileSync('tests/test-controls/tdv2-946.spec.ts','.tdv2-946-ci/tests/test-controls/tdv2-946.spec.ts');
+fs.copyFileSync('.github/qa/playwright-946.config.ts','.tdv2-946-ci/playwright.config.ts');
+console.log('::add-mask::'+bundle.token);
+fs.appendFileSync(process.env.GITHUB_ENV, 'TESTDINO_TOKEN='+bundle.token+'\n');
+console.log('Verified exact QA reporter package SHA-256: '+expected);
