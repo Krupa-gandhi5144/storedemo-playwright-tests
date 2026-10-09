@@ -18,7 +18,7 @@ for(const name of names) {
   const folder=path.resolve('output/tdv2-950',new Date().toISOString().replace(/[:.]/g,'-')+'-'+name);
   fs.mkdirSync(folder,{recursive:true});
   const env={...process.env,TDV2_QA_TOKEN:token,TESTDINO_CI_RUN_ID:'tdv2-950-'+process.env.GITHUB_RUN_ID+'-'+name,TDV2_943_ENABLED:'1',TDV2_QA_EVIDENCE:path.join(folder,'results.json'),TDV2_QA_ARTIFACTS:path.join(folder,'artifacts'),TDV2_943_CRITICAL:s.CRITICAL||'pass',TDV2_943_SECOND:s.SECOND||'pass',TDV2_943_ORDINARY:s.ORDINARY||'pass',TDV2_943_QUARANTINE:'pass',TDV2_950_CAPACITY_RETRIES:s.capacity||'0',TDV2_950_FILTER:s.filter};
-  const r=spawnSync(process.execPath,[require.resolve('@playwright/test/cli'),'test','--config=playwright.config.ts','--project=chromium'],{env,encoding:'utf8'});
+  const r=spawnSync(process.execPath,[require.resolve('@playwright/test/cli',{paths:[process.cwd()]}),'test','--config=playwright.config.ts','--project=chromium'],{env,encoding:'utf8'});
   const log=(r.stdout||'')+(r.stderr||''); fs.writeFileSync(path.join(folder,'console.log'),log);
   const record={scenario:name,expectedExit:s.expected,actualExit:r.status,exitMatches:r.status===s.expected,ruleMessages:log.split('\n').filter(l=>/TestDino Test Controls:|Build fails:|Critical tests failed:/.test(l)).map(l=>l.replace(/\u001b\[[0-9;]*m/g,'')),runLinks:[...new Set(log.match(/https:\/\/[^\s]+\/test-runs\/[^\s]+/g)||[])],evidence:folder};
   fs.writeFileSync(path.join(folder,'execution.json'),JSON.stringify(record,null,2));console.log(JSON.stringify(record));
