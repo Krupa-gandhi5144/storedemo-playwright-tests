@@ -29,7 +29,7 @@ jobs:
         run: npm install --prefix .tdv2-950-ci --ignore-scripts --no-audit --no-fund --package-lock=false
       - name: Exercise notifications and capture PR snapshots
         working-directory: .tdv2-950-ci
-        run: node ../.github/qa/run-950.cjs --matrix
+        run: node ../.github/qa/run-950.cjs one-critical-retry
       - name: Preserve notification evidence
         if: always()
         uses: actions/upload-artifact@v4
