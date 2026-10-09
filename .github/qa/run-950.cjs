@@ -2,6 +2,7 @@ const fs = require('node:fs');
 const path = require('node:path');
 const {spawnSync} = require('node:child_process');
 const scenarios = {
+  'critical-failure': {CRITICAL:'fail', filter:'TDV2-943 critical target', expected:1},
   'one-critical-retry': {CRITICAL:'retry', filter:'TDV2-943 critical target', expected:1},
   'two-critical-retries': {CRITICAL:'retry', SECOND:'retry', filter:'TDV2-943 (critical|second critical) target', expected:1},
   'eleven-critical-retries': {capacity:'11', filter:'TDV2-943 capacity reference (0[1-9]|1[01])$', expected:1},
@@ -11,7 +12,7 @@ const scenarios = {
   'ordinary-failure': {ORDINARY:'fail', filter:'TDV2-943 ordinary target', expected:1},
   'ordinary-retry': {ORDINARY:'retry', filter:'TDV2-943 ordinary target', expected:0},
 };
-const names = process.argv[2] === '--matrix' ? Object.keys(scenarios) : [process.argv[2]];
+const names = process.argv[2] === '--finish' ? ['critical-failure','one-critical-retry'] : process.argv[2] === '--matrix' ? Object.keys(scenarios) : [process.argv[2]];
 const token = process.env.TESTDINO_TOKEN;
 for(const name of names) {
   const s=scenarios[name]; if(!s)throw Error('Unknown scenario');
