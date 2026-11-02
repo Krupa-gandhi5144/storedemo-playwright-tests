@@ -5,27 +5,48 @@ TestDino identifies the test runner on a run, starting with the e2e framework by
 
 It holds two suites against https://storedemo.testdino.com, both reporting to TestDino staging:
 
-| Suite | Runner | Reporter | Files |
+| Suite | Runner | Reporter | Config / files |
 | --- | --- | --- | --- |
-| e2e | `e2e` 0.21.3 + `@e2e-dev/web` | `@testdino/e2e` (1.1.0 test build) | `e2e.config.ts`, `e2e/*.e2e.ts` |
+| e2e desktop | `e2e` 0.21.3 + `@e2e-dev/web` | `@testdino/e2e` (1.1.0 test build) | `e2e.config.ts`, `e2e/*.e2e.ts` |
+| e2e phones | same | same | `e2e.mobile.config.ts`, `e2e-mobile/*.e2e.ts` |
+| e2e edge cases | same | same | `e2e.edge.config.ts`, `edge/*.e2e.ts` |
 | Playwright | `@playwright/test` 1.58.2 | `@testdino/playwright` | `playwright.config.ts`, `playwright/*.spec.ts` |
+
+## Browsers
+
+| Suite | Targets / projects |
+| --- | --- |
+| e2e desktop | `chromium`, `firefox`, `webkit` (Safari engine), all 1280×720 |
+| e2e phones | `mobile-safari` (WebKit, 390×844, iPhone UA), `mobile-chrome` (Chromium, 412×915, Pixel UA) |
+| Playwright | `chromium`, `chrome` (installed Google Chrome), `firefox`, `webkit`, `mobile-safari` (iPhone 13), `mobile-chrome` (Pixel 7) |
+
+Phones are browser emulation. Real iOS/Android devices need `@e2e-dev/mobile` and
+simulators; the ticket lists mobile targets as out of scope. Storedemo hides the
+desktop menu, cart and wishlist below ~1024 px, so phones run their own tests.
+
+Run one browser: `npx e2e run --target webkit` or `npx playwright test --project=chrome`.
 
 ## Expected results
 
-**e2e run** (`npm run e2e`): 2 targets (`desktop` 1280×720, `desktop-wide` 1920×1080), `retries: 1`.
+**e2e desktop** (`npm run e2e`): 3 targets, `retries: 1`.
 
 | | per target | total |
 | --- | --- | --- |
-| Passed | 15 | 30 |
-| Failed | 1 — `close carts button can be tapped (fails by design)` | 2 |
-| Flaky | 1 — `cart icon is shown (flaky by design)` | 2 |
-| Skipped | 1 — `wishlist can be exported as PDF (skipped by design)` | 2 |
-| **Total** | 18 | **36** |
+| Passed | 15 | 45 |
+| Failed | 1 — `close carts button can be tapped (fails by design)` | 3 |
+| Flaky | 1 — `cart icon is shown (flaky by design)` | 3 |
+| Skipped | 1 — `wishlist can be exported as PDF (skipped by design)` | 3 |
+| **Total** | 18 | **54** |
 
-Spec cards: `home.e2e.ts` = 12, `pages.e2e.ts` = 10, `cart.e2e.ts` = 8, `navigation.e2e.ts` = 6.
+Spec cards: `home.e2e.ts` = 18, `pages.e2e.ts` = 15, `cart.e2e.ts` = 12, `navigation.e2e.ts` = 9.
 
-**Playwright run** (`npm run pw`): 22 tests — 19 passed, 1 failed, 1 flaky, 1 skipped.
-Spec cards: `home.spec.ts` = 7, `pages.spec.ts` = 6, `navigation.spec.ts` = 5, `cart.spec.ts` = 4.
+**e2e phones** (`npm run e2e:mobile`): 12 tests — 10 passed, 2 failed by design.
+
+**e2e edge cases** (`npm run e2e:edge`): 11 tests — 4 passed, 4 failed (timeout, plain
+error, HTML in message, serial member), 3 skipped (runtime skip, serial member, registration skip).
+
+**Playwright** (`npm run pw`): 100 tests — 86 passed, 6 failed, 4 flaky, 4 skipped
+(22 per desktop project, 6 per phone project).
 
 ## Setup
 
@@ -33,7 +54,7 @@ Node `^22.22.3` or `>=24.8.0` (needed by e2e 0.21.3).
 
 ```bash
 npm install
-npx playwright install chromium
+npm run install:browsers      # Chromium, Firefox, WebKit for e2e and Playwright
 cp .env.example .env          # fill in TESTDINO_TOKEN (staging project key)
 ```
 
