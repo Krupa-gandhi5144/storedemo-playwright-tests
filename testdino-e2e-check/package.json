@@ -15,12 +15,13 @@
     "e2e:long": "npm run reset && E2E_LONG_TEST=1 e2e run e2e/long-running.e2e.ts",
     "pw": "playwright test",
     "pw:sharded": "node scripts/pw-sharded.mjs",
-    "check:versions": "node -v && npm ls e2e @e2e-dev/web @testdino/e2e @playwright/test @testdino/playwright"
+    "check:versions": "node -v && npm ls e2e @e2e-dev/web @testdino/e2e @playwright/test @testdino/playwright",
+    "e2e:sharded": "npm run reset && node scripts/e2e-sharded.mjs"
   },
   "devDependencies": {
     "@e2e-dev/web": "^0.15.3",
     "@playwright/test": "1.58.2",
-    "@testdino/e2e": "^1.0.1",
+    "@testdino/e2e": "file:vendor/testdino-e2e-1.1.0.tgz",
     "@testdino/playwright": "^2.10.1",
     "@types/node": "^24.10.1",
     "e2e": "0.21.3"

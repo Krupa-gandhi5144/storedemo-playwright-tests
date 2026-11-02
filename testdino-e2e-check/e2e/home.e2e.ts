@@ -34,18 +34,19 @@ describe('home page', { tags: ['home'] }, () => {
     await expect(screen.getByTestId('header-logo')).toBeVisible();
   });
 
-  // FAILS BY DESIGN: a locator that finds nothing.
+  // FAILS BY DESIGN: a role locator whose name is one letter off ("Close carts"
+  // vs the real "Close cart"), so e2e records near matches.
   // Checks: Error Details → "Page at failure", "Closest matches on screen";
   // Console → the app's log lines; Retry #1 → screenshot, log, walkthrough.
-  test('place order button is shown on the home page (fails by design)', async ({ app, screen, browser }) => {
+  test('close carts button can be tapped (fails by design)', async ({ app, screen, browser }) => {
     await app.open('/');
     await browser.evaluate(() => {
       console.log('[storedemo] home page loaded');
       console.warn('[storedemo] cart is empty');
-      console.error('[storedemo] place order button not rendered');
+      console.error('[storedemo] close carts button not rendered');
     });
-    console.log('test stdout: looking for the Place order button');
-    await expect(screen.getByRole('button', 'Place order')).toBeVisible();
+    console.log('test stdout: looking for the Close carts button');
+    await screen.getByRole('button', 'Close carts').tap({ timeout: 5_000 });
   });
 
   // FLAKY BY DESIGN: fails on the first attempt, passes on the retry.

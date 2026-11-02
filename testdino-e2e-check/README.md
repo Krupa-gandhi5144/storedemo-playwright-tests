@@ -16,16 +16,16 @@ It holds two suites against https://storedemo.testdino.com, both reporting to Te
 
 | | per target | total |
 | --- | --- | --- |
-| Passed | 6 | 12 |
-| Failed | 1 — `place order button is shown on the home page (fails by design)` | 2 |
+| Passed | 15 | 30 |
+| Failed | 1 — `close carts button can be tapped (fails by design)` | 2 |
 | Flaky | 1 — `cart icon is shown (flaky by design)` | 2 |
 | Skipped | 1 — `wishlist can be exported as PDF (skipped by design)` | 2 |
-| **Total** | 9 | **18** |
+| **Total** | 18 | **36** |
 
-Spec cards: `e2e/home.e2e.ts` = 12 tests, `e2e/navigation.e2e.ts` = 6 tests.
+Spec cards: `home.e2e.ts` = 12, `pages.e2e.ts` = 10, `cart.e2e.ts` = 8, `navigation.e2e.ts` = 6.
 
-**Playwright run** (`npm run pw`): 12 tests — 9 passed, 1 failed, 1 flaky, 1 skipped.
-Spec cards: `playwright/home.spec.ts` = 7, `playwright/navigation.spec.ts` = 5.
+**Playwright run** (`npm run pw`): 22 tests — 19 passed, 1 failed, 1 flaky, 1 skipped.
+Spec cards: `home.spec.ts` = 7, `pages.spec.ts` = 6, `navigation.spec.ts` = 5, `cart.spec.ts` = 4.
 
 ## Setup
 
@@ -54,8 +54,9 @@ Before testing, make sure microservices #1459 is deployed on staging.
 | `npm run e2e` | Full e2e run (18 tests). Open Test runs on lab.testdino.com as soon as it starts. |
 | `npm run e2e:filtered` | e2e run with `--grep "home page shows the header"`: total must be 2 and not marked incomplete. |
 | `npm run e2e:long` | One test that idles 2.5 min: the run must stay running, not end as incomplete. |
+| `npm run e2e:sharded` | e2e as parallel shards with one `TESTDINO_CI_RUN_ID` (default `SHARDS=3 WORKERS=2`): one merged run with a Shards panel. |
 | `npm run pw` | Full Playwright run (unsharded). |
-| `npm run pw:sharded` | Playwright as 2 shards with one `TESTDINO_CI_RUN_ID`: one merged run, spec cards show 7 and 5 totals. |
+| `npm run pw:sharded` | Playwright as parallel shards with one `TESTDINO_CI_RUN_ID` (default `SHARDS=3 WORKERS=2`): one merged run, spec cards show full file totals. |
 | `npm run reset` | Clears flaky markers in `.e2e-state/`. Every `e2e*` script runs it first. |
 
 Re-run (copy the command from the Re-run sheet on the run, same `.env`):
@@ -73,9 +74,9 @@ Expected: only the 2 failed tests run, and the new run's total is 2.
 | Run appears live, Running tab, Active runs worker line, tests finish one by one | `npm run e2e` — 4 slow tests per target (6–7 s each) |
 | Run stays running during a 2+ min quiet test | `npm run e2e:long` |
 | Counts match the e2e terminal summary | `npm run e2e` (see the table above) |
-| Spec cards show real totals | `npm run e2e` (12 / 6), `npm run pw:sharded` (7 / 5) |
+| Spec cards show real totals | `npm run e2e` / `npm run e2e:sharded` (12 / 10 / 8 / 6), `npm run pw:sharded` (7 / 6 / 5 / 4) |
 | Configuration: "e2e 0.21.3" + Targets table (`desktop`, `desktop-wide`) | `npm run e2e` |
-| Error Details: page at failure, Closest matches on screen | failing test: `getByRole("button", "Place order")` finds nothing |
+| Error Details: page at failure, Closest matches on screen | failing test taps `getByRole("button", "Close carts")`; the real button is "Close cart", so e2e records it as a near match |
 | Console: the app's log lines with their step | failing test logs `console.log/warn/error` in the page |
 | Walkthrough on last attempt of failed and flaky tests; none on first attempt or passed tests | `trace: 'retain-on-failure'` in `e2e.config.ts` |
 | Filtered run total | `npm run e2e:filtered` |
