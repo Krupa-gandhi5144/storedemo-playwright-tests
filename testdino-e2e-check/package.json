@@ -16,7 +16,10 @@
     "pw": "playwright test",
     "pw:sharded": "node scripts/pw-sharded.mjs",
     "check:versions": "node -v && npm ls e2e @e2e-dev/web @testdino/e2e @playwright/test @testdino/playwright",
-    "e2e:sharded": "npm run reset && node scripts/e2e-sharded.mjs"
+    "e2e:sharded": "npm run reset && node scripts/e2e-sharded.mjs",
+    "e2e:mobile": "npm run reset && e2e run --config e2e.mobile.config.ts",
+    "e2e:edge": "e2e run --config e2e.edge.config.ts",
+    "install:browsers": "node node_modules/playwright-core/cli.js install chromium firefox webkit && playwright install chromium firefox webkit"
   },
   "devDependencies": {
     "@e2e-dev/web": "^0.15.3",

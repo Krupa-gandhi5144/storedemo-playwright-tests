@@ -53,8 +53,9 @@ describe('home page', { tags: ['home'] }, () => {
   // Checks: the passing retry has a walkthrough; the run counts it as flaky.
   test('cart icon is shown (flaky by design)',async ({ app, screen, browser }) => {
     await app.open('/');
-    const width = await browser.evaluate(() => window.innerWidth);
-    if (isFirstAttempt(`home-flaky-${width}`)) {
+    // Keyed per browser, so each target fails once then passes on its retry.
+    const ua = await browser.evaluate(() => navigator.userAgent);
+    if (isFirstAttempt(`home-flaky-${ua}`)) {
       await browser.evaluate(() => console.error('[storedemo] cart drawer slow to load'));
       await expect(screen.getByText('Cart loaded on first try')).toBeVisible();
     }

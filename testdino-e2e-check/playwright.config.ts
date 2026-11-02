@@ -2,10 +2,16 @@
 // a Playwright run must still show Playwright + version, the usual settings
 // table, the trace viewer and its own Re-run sheet. Sharded runs
 // (npm run pw:sharded) check that spec-card totals count every shard.
+//
+// Projects: 4 desktop browsers + 2 phones. Run one with --project, e.g.
+//   npx playwright test --project=webkit
 import { existsSync } from 'node:fs';
 import { defineConfig, devices } from '@playwright/test';
 
 if (existsSync('.env')) process.loadEnvFile('.env');
+
+const desktop = { testIgnore: /mobile\.spec\.ts/ };
+const phone = { testMatch: /mobile\.spec\.ts/ };
 
 export default defineConfig({
   testDir: './playwright',
@@ -22,7 +28,14 @@ export default defineConfig({
     screenshot: 'only-on-failure',
   },
 
-  projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],
+  projects: [
+    { name: 'chromium', ...desktop, use: { ...devices['Desktop Chrome'] } },
+    { name: 'chrome', ...desktop, use: { ...devices['Desktop Chrome'], channel: 'chrome' } },
+    { name: 'firefox', ...desktop, use: { ...devices['Desktop Firefox'] } },
+    { name: 'webkit', ...desktop, use: { ...devices['Desktop Safari'] } },
+    { name: 'mobile-safari', ...phone, use: { ...devices['iPhone 13'] } },
+    { name: 'mobile-chrome', ...phone, use: { ...devices['Pixel 7'] } },
+  ],
 
   reporter: [
     ['list'],
