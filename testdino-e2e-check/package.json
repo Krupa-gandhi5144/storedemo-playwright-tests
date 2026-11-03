@@ -25,7 +25,7 @@
     "@e2e-dev/web": "^0.15.3",
     "@playwright/test": "1.58.2",
     "@testdino/e2e": "file:vendor/testdino-e2e-1.1.0.tgz",
-    "@testdino/playwright": "^2.10.1",
+    "@testdino/playwright": "^2.11.1",
     "@types/node": "^24.10.1",
     "e2e": "0.21.3"
   }

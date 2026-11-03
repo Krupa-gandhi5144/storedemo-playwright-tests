@@ -5,7 +5,8 @@
 // Env toggles for edge/negative runs:
 //   E2E_TRACE=on         keep a trace page for every test (default: retain-on-failure)
 //   TD_ARTIFACTS=false   reporter keeps screenshots/videos/traces local
-//   TD_TAGS=a,b          run-level tags (default: tdv2-1087,e2e)
+//   TD_TAGS=a,b          run-level tags set in the config (default: none, so TESTDINO_TAGS applies)
+//   TESTDINO_TAGS=a,b    run-level tags read by the reporter (ignored when TD_TAGS is set)
 import { existsSync } from 'node:fs';
 import type { E2EConfig } from 'e2e';
 import { web } from '@e2e-dev/web';
@@ -40,10 +41,12 @@ export default {
     { name: 'webkit', engine: web({ browser: 'webkit', viewport }), app: { url: appUrl } },
   ],
 
+  // Config tags only when TD_TAGS is set. Without it the config has no tags,
+  // so the reporter reads TESTDINO_TAGS (config tags win over the env var).
   reporters: [
     'list',
     testdino({
-      tags: (process.env.TD_TAGS ?? 'tdv2-1087,e2e').split(',').filter(Boolean),
+      ...(process.env.TD_TAGS ? { tags: process.env.TD_TAGS.split(',') } : {}),
       ...(process.env.TD_ARTIFACTS === 'false' ? { artifacts: false } : {}),
     }),
   ],
