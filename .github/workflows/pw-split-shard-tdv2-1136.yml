@@ -1,0 +1,40 @@
+# TDV2-1136 case 6: the ticket's split + shard shape on GitHub Actions (reporter 2.11.2).
+# Expected: the run closes when CI reports the attempt finished, with its real status; note SHARDED badge (ISS-165).
+name: pw split+shard TDV2-1136
+
+on:
+  push:
+    branches: [qa/tdv2-1133-e2e]
+    paths: ['.github/workflows/pw-split-shard-tdv2-1136.yml']
+
+env:
+  TESTDINO_TOKEN: ${{ secrets.TESTDINO_TOKEN }}
+  TESTDINO_SERVER_URL: https://stg-analytics.testdino.com
+  TESTDINO_TAGS: tdv2-1136,case6-github
+
+defaults:
+  run:
+    working-directory: testdino-e2e-check
+
+jobs:
+  split-shard:
+    name: split ${{ matrix.split }}/2 shard ${{ matrix.split }}/2
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        split: [1, 2]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+      - name: Run tdpw split ${{ matrix.split }}/2 with shard ${{ matrix.split }}/2
+        run: |
+          npx tdpw test --split ${{ matrix.split }}/2 --split-id gh-1136-${{ github.run_id }}-${{ github.run_attempt }} \
+            -- --project=chromium --shard=${{ matrix.split }}/2 --workers=2
