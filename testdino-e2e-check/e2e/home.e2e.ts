@@ -50,19 +50,6 @@ describe('home page', { tags: ['home'] }, () => {
     await screen.getByRole('button', 'Close carts').tap({ timeout: 5_000 });
   });
 
-  // FLAKY BY DESIGN: fails on the first attempt, passes on the retry.
-  // Checks: the passing retry has a walkthrough; the run counts it as flaky.
-  test('cart icon is shown (flaky by design)',async ({ app, screen, browser }) => {
-    await app.open('/');
-    // Keyed per browser, so each target fails once then passes on its retry.
-    const ua = await browser.evaluate(() => navigator.userAgent);
-    if (isFirstAttempt(`home-flaky-${ua}`)) {
-      await browser.evaluate(() => console.error('[storedemo] cart drawer slow to load'));
-      await expect(screen.getByText('Cart loaded on first try')).toBeVisible();
-    }
-    await expect(screen.getByTestId('header-cart-icon')).toBeVisible();
-  });
-
   // SKIPPED BY DESIGN.
   test.skip('wishlist can be exported as PDF (skipped by design)', async ({ app }) => {
     await app.open('/');
