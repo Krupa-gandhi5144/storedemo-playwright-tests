@@ -1,0 +1,139 @@
+# TDV2-1133 QA: one workflow, one scenario per manual run (Actions → "e2e scenarios TDV2-1133" → Run workflow).
+# Every run uploads to the TestDino project of the TESTDINO_TOKEN secret, tagged tdv2-1133,<scenario>.
+name: e2e scenarios TDV2-1133
+
+on:
+  push:
+    branches: [qa/tdv2-1133-e2e]
+    paths: ['.github/workflows/e2e-scenarios-tdv2-1133.yml']
+  workflow_dispatch:
+    inputs:
+      scenario:
+        description: Scenario to run
+        type: choice
+        options:
+          - quarantine-only      # only failure is quarantined (known error) -> exit 0, run Failed
+          - other-error          # quarantined test fails with another error -> exit 1
+          - all-pass             # passing files only -> Complete, exit 0
+          - flaky-retry          # retries: 1, one flaky test -> Passed/Flaky, not Incomplete
+          - plain-quarantine     # OLD command, quarantined failure -> exit 1 (unchanged)
+          - debug                # TESTDINO_DEBUG=1 -> debug lines
+          - update-notice        # cached "latest 9.9.9" -> newer-version line
+          - offline-registry     # npm registry blocked -> run finishes, no delay
+          - testdino-down        # TestDino server unreachable -> tests still run, exit unchanged
+          - config-error         # bad config -> exit 2 never changed
+          - repeat-each          # --repeat-each 2 with a failure -> later GitHub retry must run in full and say why
+          - unknown-option       # an e2e option the command does not know -> retry runs in full
+          - visual               # baseline then changed page -> Visual Comparison
+          - split                # 2 split jobs -> one merged run
+          - long-interrupt       # 2.5 min test; cancel the workflow while it runs -> Interrupted
+          - selection            # stored selection (needs TESTDINO_QA_TOKEN secret + selection id)
+      selection_id:
+        description: Selection id (scenario "selection" only)
+        required: false
+
+env:
+  TESTDINO_SERVER_URL: https://stg-analytics.testdino.com
+  E2E_TELEMETRY_DISABLED: '1'
+
+defaults:
+  run:
+    working-directory: testdino-e2e-check
+
+jobs:
+  scenario:
+    if: ${{ inputs.scenario != 'split' }}
+    name: ${{ matrix.scenario }}
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        # push: every automatic scenario in parallel; manual: only the picked one
+        scenario: ${{ fromJSON(inputs.scenario && format('["{0}"]', inputs.scenario) || '["quarantine-only","other-error","all-pass","flaky-retry","plain-quarantine","debug","update-notice","offline-registry","testdino-down","config-error","repeat-each","unknown-option","visual"]') }}
+    env:
+      TESTDINO_TOKEN: ${{ matrix.scenario == 'selection' && secrets.TESTDINO_QA_TOKEN || secrets.TESTDINO_TOKEN }}
+      TESTDINO_CI_RUN_ID: ${{ matrix.scenario }}-${{ github.run_id }}-${{ github.run_attempt }}
+      TD_TAGS: tdv2-1133,${{ matrix.scenario }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium firefox
+          node node_modules/playwright-core/cli.js install chromium firefox
+      - name: Run scenario ${{ matrix.scenario }}
+        shell: bash
+        env:
+          SCENARIO: ${{ matrix.scenario }}
+          SELECTION_ID: ${{ inputs.selection_id }}
+        run: |
+          node scripts/reset-state.mjs
+          TD="npx -p @testdino/e2e testdino-e2e run"
+          set -x
+          case "$SCENARIO" in
+            quarantine-only)  $TD -- --target chromium e2e/home.e2e.ts --grep "close carts" ;;
+            other-error)      TD_OTHER_ERROR=1 $TD -- --target chromium e2e/home.e2e.ts --grep "close carts" ;;
+            all-pass)         $TD -- --target chromium e2e/cart.e2e.ts e2e/navigation.e2e.ts e2e/pages.e2e.ts ;;
+            flaky-retry)      $TD -- --target chromium e2e/home.e2e.ts --grep "cart icon" ;;
+            plain-quarantine) npx e2e run --target chromium e2e/home.e2e.ts --grep "close carts" ;;
+            debug)            TESTDINO_DEBUG=1 $TD -- --target chromium e2e/navigation.e2e.ts ;;
+            update-notice)
+              node -e "require('fs').writeFileSync(require('os').tmpdir()+'/testdino-e2e-update-check.json', JSON.stringify({checkedAt: Date.now(), latest: '9.9.9'}))"
+              $TD -- --target chromium e2e/navigation.e2e.ts ;;
+            offline-registry)
+              echo "0.0.0.0 registry.npmjs.org" | sudo tee -a /etc/hosts
+              time $TD -- --target chromium e2e/navigation.e2e.ts ;;
+            testdino-down)
+              TESTDINO_SERVER_URL=https://127.0.0.1:9 $TD -- --target chromium e2e/navigation.e2e.ts ;;
+            config-error)     $TD -- --config does-not-exist.config.ts ;;
+            repeat-each)      TD_OTHER_ERROR=1 $TD -- --target chromium e2e/home.e2e.ts --grep "close carts" --repeat-each 2 ;;
+            unknown-option)   TD_OTHER_ERROR=1 $TD -- --target chromium e2e/home.e2e.ts --grep "close carts" --some-unknown-flag ;;
+            visual)
+              rm -rf visual/visual.e2e.ts-snapshots
+              npx e2e run --config e2e.visual.config.ts --update-snapshots
+              VISUAL_CHANGE=1 $TD -- --config e2e.visual.config.ts ;;
+            long-interrupt)   E2E_LONG_TEST=1 $TD -- --target chromium e2e/long-running.e2e.ts ;;
+            selection)        $TD --selection "$SELECTION_ID" ;;
+          esac
+
+  split:
+    if: ${{ !inputs.scenario || inputs.scenario == 'split' }}
+    name: split ${{ matrix.split }}/2
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - split: 1
+            files: e2e/cart.e2e.ts e2e/navigation.e2e.ts
+          - split: 2
+            files: e2e/home.e2e.ts e2e/pages.e2e.ts
+    env:
+      TESTDINO_TOKEN: ${{ secrets.TESTDINO_TOKEN }}
+      TESTDINO_SPLIT: ${{ matrix.split }}/2
+      TESTDINO_SPLIT_ID: split-${{ github.run_id }}-${{ github.run_attempt }}
+      TESTDINO_CI_RUN_ID: split-${{ github.run_id }}-${{ github.run_attempt }}
+      TD_TAGS: tdv2-1133,split
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+          node node_modules/playwright-core/cli.js install chromium
+      - name: Run split ${{ matrix.split }}/2
+        run: |
+          node scripts/reset-state.mjs
+          npx -p @testdino/e2e testdino-e2e run -- --target chromium ${{ matrix.files }}
