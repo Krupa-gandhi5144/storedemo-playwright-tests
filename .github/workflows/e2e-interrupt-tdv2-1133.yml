@@ -1,0 +1,38 @@
+# TDV2-1133 QA: interrupt check. Starts a 2.5 min test through testdino-e2e run;
+# cancel this workflow while it runs. Expected: TestDino run ends Interrupted, exit code not changed.
+name: e2e interrupt TDV2-1133
+
+on:
+  push:
+    branches: [qa/tdv2-1133-e2e]
+    paths: ['.github/workflows/e2e-interrupt-tdv2-1133.yml']
+
+env:
+  TESTDINO_TOKEN: ${{ secrets.TESTDINO_TOKEN }}
+  TESTDINO_SERVER_URL: https://stg-analytics.testdino.com
+  TESTDINO_CI_RUN_ID: interrupt-${{ github.run_id }}-${{ github.run_attempt }}
+  E2E_TELEMETRY_DISABLED: '1'
+  TD_TAGS: tdv2-1133,long-interrupt
+  E2E_LONG_TEST: '1'
+
+defaults:
+  run:
+    working-directory: testdino-e2e-check
+
+jobs:
+  long:
+    name: long test (cancel me)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+          node node_modules/playwright-core/cli.js install chromium
+      - name: Run long test
+        run: npx -p @testdino/e2e testdino-e2e run -- --target chromium e2e/long-running.e2e.ts e2e/navigation.e2e.ts
