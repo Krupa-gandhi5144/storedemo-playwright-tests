@@ -46,6 +46,7 @@ describe('home page', { tags: ['home'] }, () => {
       console.error('[storedemo] close carts button not rendered');
     });
     console.log('test stdout: looking for the Close carts button');
+    if (process.env.TD_OTHER_ERROR === '1') throw new Error('TDV2-1133: a different error, not the known one');
     await screen.getByRole('button', 'Close carts').tap({ timeout: 5_000 });
   });
 

@@ -5,6 +5,7 @@ name: Run Playwright tests
 
 on:
   push:
+    branches-ignore: [qa/tdv2-1133-e2e]
   pull_request:
   workflow_dispatch:
 

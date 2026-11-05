@@ -26,8 +26,8 @@
   "devDependencies": {
     "@e2e-dev/web": "^0.15.3",
     "@playwright/test": "1.58.2",
-    "@testdino/e2e": "file:vendor/testdino-e2e-1.1.0.tgz",
-    "@testdino/playwright": "^2.11.1",
+    "@testdino/e2e": "file:vendor/testdino-e2e-1.1.0-rerun.tgz",
+    "@testdino/playwright": "file:vendor/testdino-playwright-2.11.2.tgz",
     "@types/node": "^24.10.1",
     "e2e": "0.21.3"
   }
