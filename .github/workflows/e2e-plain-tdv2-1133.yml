@@ -1,0 +1,43 @@
+# TDV2-1133 QA: the OLD command `npx e2e run` on GitHub Actions (no testdino-e2e run).
+# Expected: results and exit codes unchanged; TestDino's Re-run offers the GitHub
+# retry with a note that the job re-runs in full.
+name: e2e plain TDV2-1133
+
+on:
+  push:
+    branches: [qa/tdv2-1133-e2e]
+    paths: ['testdino-e2e-check/**', '.github/workflows/e2e-plain-tdv2-1133.yml']
+
+env:
+  TESTDINO_TOKEN: ${{ secrets.TESTDINO_TOKEN }}
+  TESTDINO_SERVER_URL: https://stg-analytics.testdino.com
+  TESTDINO_CI_RUN_ID: plain-${{ github.run_id }}-${{ github.run_attempt }}
+  E2E_TELEMETRY_DISABLED: '1'
+  TD_OTHER_ERROR: '1'
+  TD_TAGS: tdv2-1133,plain-e2e-run
+
+defaults:
+  run:
+    working-directory: testdino-e2e-check
+
+jobs:
+  plain:
+    name: plain npx e2e run
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium
+          node node_modules/playwright-core/cli.js install chromium
+      - name: Run e2e (old command)
+        run: |
+          node scripts/reset-state.mjs
+          npx e2e run --target chromium
