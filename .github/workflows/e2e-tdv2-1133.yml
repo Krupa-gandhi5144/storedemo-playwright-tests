@@ -18,7 +18,7 @@ on:
       testdino_rerun_tags: { required: false }
 
 env:
-  TESTDINO_TOKEN: ${{ secrets.TESTDINO_E2E_TOKEN }}
+  TESTDINO_TOKEN: ${{ secrets.TESTDINO_TOKEN }}
   TESTDINO_SERVER_URL: https://stg-analytics.testdino.com
   TESTDINO_CI_RUN_ID: ${{ github.run_id }}-${{ github.run_attempt }}
   E2E_TELEMETRY_DISABLED: '1'
