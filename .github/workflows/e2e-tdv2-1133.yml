@@ -9,6 +9,8 @@ on:
   push:
     branches: [qa/tdv2-1133-e2e]
     paths: ['testdino-e2e-check/**', '.github/workflows/e2e-tdv2-1133.yml']
+  pull_request:
+    branches: [main]
   workflow_dispatch:
     inputs:
       testdino_rerun_from: { required: false }
