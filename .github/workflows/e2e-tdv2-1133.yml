@@ -1,0 +1,90 @@
+# TDV2-1133 QA: e2e (TesterArmy) runs through `testdino-e2e run` on GitHub Actions.
+# - push to qa/tdv2-1133-e2e: 2 shards x (chromium + firefox), one test fails on purpose
+#   (TD_OTHER_ERROR=1, not covered by its quarantine) so TestDino's Re-run has failures.
+# - workflow_dispatch with testdino_rerun_* inputs: TestDino's custom / Latest / Another
+#   branch re-runs, as in the @testdino/e2e README.
+name: e2e TDV2-1133
+
+on:
+  push:
+    branches: [qa/tdv2-1133-e2e]
+    paths: ['testdino-e2e-check/**', '.github/workflows/e2e-tdv2-1133.yml']
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+    inputs:
+      testdino_rerun_from: { required: false }
+      testdino_rerun_scope: { required: false }
+      testdino_rerun_test_ids: { required: false }
+      testdino_rerun_exclude_ids: { required: false }
+      testdino_rerun_tags: { required: false }
+
+env:
+  TESTDINO_TOKEN: ${{ secrets.TESTDINO_TOKEN }}
+  TESTDINO_SERVER_URL: https://stg-analytics.testdino.com
+  TESTDINO_CI_RUN_ID: ${{ github.run_id }}-${{ github.run_attempt }}
+  E2E_TELEMETRY_DISABLED: '1'
+  TD_OTHER_ERROR: '1'
+
+defaults:
+  run:
+    working-directory: testdino-e2e-check
+
+jobs:
+  e2e:
+    if: ${{ !inputs.testdino_rerun_from }}
+    name: e2e shard ${{ matrix.shard }}/2
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2]
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium firefox
+          node node_modules/playwright-core/cli.js install chromium firefox
+      - name: Run e2e through TestDino
+        run: |
+          node scripts/reset-state.mjs
+          npx -p @testdino/e2e testdino-e2e run -- --target chromium --target firefox --shard ${{ matrix.shard }}/2
+
+  rerun:
+    if: ${{ inputs.testdino_rerun_from }}
+    name: e2e re-run from TestDino
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+      - name: Install
+        run: |
+          npm ci
+          npx playwright install --with-deps chromium firefox
+          node node_modules/playwright-core/cli.js install chromium firefox
+      - name: Re-run through TestDino
+        shell: bash
+        env:
+          TD_FROM: ${{ inputs.testdino_rerun_from }}
+          TD_SCOPE: ${{ inputs.testdino_rerun_scope }}
+          TD_IDS: ${{ inputs.testdino_rerun_test_ids }}
+          TD_EXCLUDE: ${{ inputs.testdino_rerun_exclude_ids }}
+          TD_RERUN: ${{ inputs.testdino_rerun_tags }}
+        run: |
+          args=(--from-run "$TD_FROM" --scope "${TD_SCOPE:-failed}")
+          [ -n "$TD_IDS" ] && args+=(--test-ids "$TD_IDS")
+          [ -n "$TD_EXCLUDE" ] && args+=(--exclude-ids "$TD_EXCLUDE")
+          [ -n "$TD_RERUN" ] && args+=(--rerun-tags "$TD_RERUN")
+          npx -p @testdino/e2e testdino-e2e rerun "${args[@]}"
