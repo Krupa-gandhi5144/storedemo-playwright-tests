@@ -8,7 +8,7 @@ on:
   workflow_dispatch:
 
 env:
-  TESTDINO_TOKEN: ${{ secrets.TESTDINO_PROD_TOKEN }}
+  TESTDINO_TOKEN: ${{ secrets.TESTDINO_TOKEN }}
   TESTDINO_SERVER_URL: https://reporter.testdino.com
   RETRIES: '0'
 
