@@ -1,0 +1,63 @@
+# TDV2-1146 / TDV2-1135 on prod: real GitHub Actions shard matrix + timed-out step check.
+name: release readiness TDV2-1146 (prod)
+
+on:
+  push:
+    branches: [qa/tdv2-1146-gh]
+    paths: ['.github/workflows/release-readiness-tdv2-1146.yml', 'qa-release-1146/**']
+  workflow_dispatch:
+
+env:
+  TESTDINO_TOKEN: ${{ secrets.TESTDINO_PROD_TOKEN }}
+  TESTDINO_SERVER_URL: https://reporter.testdino.com
+  RETRIES: '0'
+
+defaults:
+  run:
+    working-directory: qa-release-1146
+
+jobs:
+  full:
+    name: 1. full run (baseline)
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '24' }
+      - run: npm install --no-audit --no-fund && npx playwright install --with-deps chromium firefox
+      - run: npx tdpw test
+
+  shards:
+    name: 2. complete shard ${{ matrix.shard }}/2 (timed-out test)
+    needs: full
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2]
+    env:
+      HANG: slow
+      TESTDINO_CI_RUN_ID: gh-complete-${{ github.run_id }}-${{ github.run_attempt }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '24' }
+      - run: npm install --no-audit --no-fund && npx playwright install --with-deps chromium firefox
+      - run: npx tdpw test --shard=${{ matrix.shard }}/2 || true
+
+  missing-shard:
+    name: 3. only shard 1/2 reports
+    needs: shards
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    env:
+      ONE_BROWSER: '1'
+      TESTDINO_CI_RUN_ID: gh-missing-${{ github.run_id }}-${{ github.run_attempt }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: '24' }
+      - run: npm install --no-audit --no-fund && npx playwright install --with-deps chromium
+      - run: npx tdpw test --shard=1/2
